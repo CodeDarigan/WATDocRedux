@@ -8,7 +8,23 @@ Welcome to WAT Docs's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Getting Started
+
+   What is WAT <undefined.rst>
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Tutorials
+
+   Watching Signals <undefined.rst>
+
+.. toctree::
+   :maxdepth: 2
+   :caption: API
+
+   Assertions <undefined.rst>
+
+
 
 
 
