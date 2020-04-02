@@ -8,15 +8,27 @@ Welcome to WAT Docs's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Getting Started
+   :caption: General
 
    What is WAT <undefined.rst>
+   Frequently Asked Questions <undefined.rst>
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Getting Started
+
+   Installing WAT <undefined.rst>
+   Your First Test <undefined.rst>
+   Test Fixtures <undefined.rst>
 
 .. toctree::
    :maxdepth: 2
    :caption: Tutorials
 
+   Paramterized Testing <undefined.rst>
    Watching Signals <undefined.rst>
+   Yielding In Tests <undefined.rst>
+   Test Doubles <undefined.rst>
 
 .. toctree::
    :maxdepth: 2
