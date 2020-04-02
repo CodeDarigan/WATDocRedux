@@ -10,15 +10,15 @@ Welcome to WAT Docs's documentation!
    :maxdepth: 1
    :caption: General
 
-   What is WAT <pages/general/what_is_wat.rst>
+   Introduction <pages/general/introduction.rst>
    Frequently Asked Questions <pages/general/faq.rst>
 
 .. toctree::
    :maxdepth: 2
    :caption: Getting Started
 
-   Installing WAT <undefined.rst>
-   Your First Test <undefined.rst>
+   Installing WAT <pages/getting_started/install.rst>
+   Your First Test <pages/getting_started/your_first_test.rst>
    Test Fixtures <undefined.rst>
 
 .. toctree::

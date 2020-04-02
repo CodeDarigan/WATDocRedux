@@ -1,11 +1,22 @@
-What is WAT?
+Introduction
 =============
+
+*************
+What is WAT?
+*************
 
 WAT is an automated testing plugin for the [Godot] game engine.
 
-===========================
+**********************
+What You Need To Know
+**********************
+
+Automated Testing is an advanced topic in programming. This documentation assumes you have a basic working knowledge
+of both programming fundamentals and at the very least a passing understanding of the Godot Engine API.
+
+***************************
 What is Automated Testing?
-===========================
+***************************
 
 Have you ever been unsure if a function was returning the right value or even be called at all in the first place? 
 And in your attempts to verify this you've written examples like the following

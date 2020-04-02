@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Frequently Asked Questions &mdash; WAT Docs 4.2.0 documentation</title>
+  <title>Introduction &mdash; WAT Docs 4.2.0 documentation</title>
   
 
   
@@ -34,9 +34,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Installing WAT" href="../getting_started/install.html" />
-    <link rel="prev" title="What is WAT?" href="what_is_wat.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,12 +79,8 @@
             
             
               <p class="caption"><span class="caption-text">General</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="what_is_wat.html">What is WAT</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently Asked Questions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ask-a-question">Ask A Question</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
@@ -156,13 +150,13 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Frequently Asked Questions</li>
+      <li>Introduction</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/pages/general/faq.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/pages/general/introduction.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,19 +169,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="frequently-asked-questions">
-<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
-<p>No questions have been asked</p>
-<div class="section" id="ask-a-question">
-<h2>Ask A Question<a class="headerlink" href="#ask-a-question" title="Permalink to this headline">¶</a></h2>
-<p>You can ask a question by</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Reporting an issue at [WAT Github Repo]</p></li>
-<li><p>Tweeting me at &#64;AlexAndDraw</p></li>
-<li><p>Sending an e-mail to <a class="reference external" href="mailto:code&#37;&#52;&#48;darigan&#46;ie">code<span>&#64;</span>darigan<span>&#46;</span>ie</a> with the subject ‘WAT’</p></li>
-</ul>
-</div></blockquote>
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-wat">
+<h2>What is WAT?<a class="headerlink" href="#what-is-wat" title="Permalink to this headline">¶</a></h2>
+<p>WAT is an automated testing plugin for the [Godot] game engine.</p>
+</div>
+<div class="section" id="what-you-need-to-know">
+<h2>What You Need To Know<a class="headerlink" href="#what-you-need-to-know" title="Permalink to this headline">¶</a></h2>
+<p>Automated Testing is an advanced topic in programming. This documentation assumes you have a basic working knowledge
+of both programming fundamentals and at the very least a passing understanding of the Godot Engine API.</p>
+</div>
+<div class="section" id="what-is-automated-testing">
+<h2>What is Automated Testing?<a class="headerlink" href="#what-is-automated-testing" title="Permalink to this headline">¶</a></h2>
+<p>Have you ever been unsure if a function was returning the right value or even be called at all in the first place?
+And in your attempts to verify this you’ve written examples like the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">damage</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">attacker</span><span class="o">.</span><span class="n">calculate_damage</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">damage</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">calculate_damage</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;calculate_damage was called&quot;</span><span class="p">)</span>
+    <span class="o">//</span> <span class="n">code</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">battle</span><span class="p">(</span><span class="n">player</span><span class="p">:</span> <span class="n">Object</span><span class="p">,</span> <span class="n">attacker</span><span class="p">:</span> <span class="n">Object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
+    <span class="o">//</span> <span class="n">code</span>
+    <span class="n">var</span> <span class="n">damage</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">attacker</span><span class="o">.</span><span class="n">calculate_damage</span><span class="p">()</span>
+    <span class="n">var</span> <span class="n">before_damage_check</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">health</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">take_damage</span><span class="p">(</span><span class="n">damage</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">health</span> <span class="o">==</span> <span class="n">before_damage_check</span> <span class="o">-</span> <span class="n">damage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All of the previous code examples are a naive form of [Unit Tests].</p>
+<p>These tests are fine by themselves but games are not simple (even the simple ones are not simple)! The problems start to begin
+when your game grows in size and now your code is cluttered with print statements everywhere! You start to have to needlessly spend your
+mental energy on figuring out which code is game code and which code is test code.</p>
+<p>You could choose to remove the old tests but then when a bug appears it may have been useful to have those tests just to make sure that
+isn’t what’s causing the bug. Ask yourself if you have ever solved a bug only for it to reappear later when you no longer remember how
+to fix it!</p>
+<p>Automated Testing provides solutions for this by allowing you create scripts known as [Test Suites] isolated from your game code
+with a number of methods known as [Tests] that you can run at the click of a button.</p>
+<p>Results are displayed inside a Godot Dock when you run tests in WAT</p>
+<p>[Results Panel]</p>
 </div>
 </div>
 
@@ -196,15 +220,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../getting_started/install.html" class="btn btn-neutral float-right" title="Installing WAT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="what_is_wat.html" class="btn btn-neutral float-left" title="What is WAT?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
