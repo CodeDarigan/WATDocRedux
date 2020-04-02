@@ -25,7 +25,7 @@ Welcome to WAT Docs's documentation!
    :maxdepth: 2
    :caption: Tutorials
 
-   Paramterized Testing <undefined.rst>
+   Parameterized Testing <undefined.rst>
    Watching Signals <undefined.rst>
    Yielding In Tests <undefined.rst>
    Test Doubles <undefined.rst>
