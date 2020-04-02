@@ -7,11 +7,11 @@ Welcome to WAT Docs's documentation!
 ====================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: General
 
-   What is WAT <undefined.rst>
-   Frequently Asked Questions <undefined.rst>
+   What is WAT <pages/general/what_is_wat.rst>
+   Frequently Asked Questions <pages/general/faq.rst>
 
 .. toctree::
    :maxdepth: 2
@@ -35,10 +35,13 @@ Welcome to WAT Docs's documentation!
    :caption: API
 
    Assertions <undefined.rst>
-
-
-
-
+   Command Line Interface <undefined.rst>
+   Scene Director <undefined.rst>
+   Script Director <undefined.rst>
+   Signal Watcher <undefined.rst>
+   Test Suite <undefined.rst>
+   Test Suite of Suites <undefined.rst>
+   Yielder <undefined.rst>
 
 Indices and tables
 ==================

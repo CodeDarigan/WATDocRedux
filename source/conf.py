@@ -20,9 +20,10 @@
 project = 'WAT Docs'
 copyright = '2020, https://github.com/CodeDarigan'
 author = 'https://github.com/CodeDarigan'
+master_doc = 'index'
 
 # The full version, including alpha/beta/rc tags
-release = '2.0.0'
+release = '4.2.0'
 
 
 # -- General configuration ---------------------------------------------------
