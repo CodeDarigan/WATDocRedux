@@ -174,14 +174,13 @@
             
   <div class="section" id="your-first-test">
 <h1>Your First Test<a class="headerlink" href="#your-first-test" title="Permalink to this headline">¶</a></h1>
-<p>We are going to test our character’s movement for this example.</p>
+<p>We are going to test that our players can walk forward correctly.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extends</span> <span class="n">Sprite</span>
 <span class="n">class_name</span> <span class="n">Player</span>
 
 <span class="n">const</span> <span class="n">SPEED</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">400</span>
 
 <span class="n">func</span> <span class="n">_process</span><span class="p">(</span><span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-    <span class="n">var</span> <span class="n">velocity</span><span class="p">:</span> <span class="n">Vector2</span> <span class="o">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">Input</span><span class="o">.</span><span class="n">is_key_pressed</span><span class="p">(</span><span class="n">KEY_D</span><span class="p">):</span>
         <span class="n">walk_forward</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">Input</span><span class="o">.</span><span class="n">is_key_pressed</span><span class="p">(</span><span class="n">KEY_A</span><span class="p">):</span>
@@ -197,7 +196,7 @@
     <span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">direction</span> <span class="o">*</span> <span class="n">SPEED</span> <span class="o">*</span> <span class="n">delta</span>
 </pre></div>
 </div>
-<p>Create a folder called <code class="docutils literal notranslate"><span class="pre">tests</span></code> in your Project’s main folder then create a script that extends <code class="docutils literal notranslate"><span class="pre">WAT.Test</span></code> named <code class="docutils literal notranslate"><span class="pre">player.test.gd</span></code>
+<p>Create a folder called <code class="docutils literal notranslate"><span class="pre">tests</span></code> in your Project’s main folder then create a script named <code class="docutils literal notranslate"><span class="pre">player.test.gd</span></code> that extends <code class="docutils literal notranslate"><span class="pre">WAT.Test</span></code>
 and store it in that folder. This script is known as a <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Suite</span></code>.</p>
 <p>The first thing we need to do is to give our test a title. By convention the title is written as <code class="docutils literal notranslate"><span class="pre">Given</span> <span class="pre">a</span> <span class="pre">X</span></code> where X is the class being tested. In this
 case we’re testing the <code class="docutils literal notranslate"><span class="pre">Player</span></code> class so following convention we will give it the name <code class="docutils literal notranslate"><span class="pre">Given</span> <span class="pre">a</span> <span class="pre">Player</span></code>.</p>
@@ -208,7 +207,7 @@ case we’re testing the <code class="docutils literal notranslate"><span class=
 </pre></div>
 </div>
 <p>WAT will call this function and use the returned String internally. Similar to how _ready and _process work in Godot itself.</p>
-<p>A <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Suite</span></code> is a collection of <code class="docutils literal notranslate"><span class="pre">Tests</span></code> where each test is a unique function. In WAT these function are prefixed with the term <code class="docutils literal notranslate"><span class="pre">test</span></code>. This prefix
+<p>A <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Suite</span></code> is a collection of <code class="docutils literal notranslate"><span class="pre">Tests</span></code> where each test is a unique function. In WAT these functions are prefixed with the term <code class="docutils literal notranslate"><span class="pre">test</span></code>. This prefix
 is necessary for WAT to seperate the functions that are tests from the functions that are not.</p>
 <p>By convention the name of these test functions are written as “When X” where X is an event. In our case we
 are testing when the player walks forward. So with the necessary test prefix and a convention together we get <code class="docutils literal notranslate"><span class="pre">test_when_they_walk_forward</span></code>.</p>
@@ -256,10 +255,41 @@ if our x position has increased.</p>
 
     <span class="c1"># Act</span>
     <span class="n">player</span><span class="o">.</span><span class="n">walk_forward</span><span class="p">()</span>
-    <span class="n">var</span> <span class="n">new_x_position</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
 
     <span class="c1"># Assert</span>
-    <span class="n">asserts</span><span class="o">.</span><span class="n">is_true</span><span class="p">(</span><span class="n">previous_x_position</span> <span class="o">&lt;</span> <span class="n">new_x_position</span><span class="p">,</span> <span class="s2">&quot;Then they have moved to the right of the screen&quot;</span><span class="p">)</span>
+    <span class="n">var</span> <span class="n">new_x_position</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">asserts</span><span class="o">.</span><span class="n">is_true</span><span class="p">(</span><span class="n">previous_x_position</span> <span class="o">&lt;</span> <span class="n">new_x_position</span><span class="p">,</span> \
+                     <span class="s2">&quot;Then they have moved to the right of the screen&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We seperate our test body into three distinct parts; Arrange, Act &amp; Assert.</p>
+<p>In the Arrange step we create an instance of our Player class and get its current position. This is our set of preconditions, we need a player
+instance so we can move it and we need its current position so we can compare against our future position.</p>
+<p>In the Act step we tell our player instance to walk_forward. This is the event or action that we’re testing. We’re testing to see if the walk_forward code
+works as we expect it to do.</p>
+<p>In the Assert step we get our new x position and check if it is greater than the older x position. This is our tests postcondition, what we need to
+be true after the code has been executed for our test to pass.</p>
+<p>Click the Play button in WAT (near the top right of the bottom panel) and you should see this screen after a second.</p>
+<img alt="../../_images/your_first_test_results.png" src="../../_images/your_first_test_results.png" />
+<p>In the Assert step of our test body you will have noticed that we didn’t use a simple <code class="docutils literal notranslate"><span class="pre">print(previous_x_position</span> <span class="pre">&lt;</span> <span class="pre">new_x_position)</span></code> check like you may do in
+a naive manual test, instead we called the <code class="docutils literal notranslate"><span class="pre">is_true</span></code> method of our <code class="docutils literal notranslate"><span class="pre">asserts</span></code> property. This is where Automated Testing starts proving its usefulness over
+manual testing.</p>
+<p>The asserts property is a list of functions that wrap common conditional checks. In addition to performing the check, these functions also allow us to add
+a clear diagnostic message (the String we used in our test) which is then shown in our results tree with a green font and a checkmark if correct or
+a red cross and default white font if not.</p>
+<p>In the [introduction] we explained the conundrum manual testing presents to you by forcing you to choose either to have your code cluttered with
+print debug statements OR removing the tests after you’ve finished checking them only to have that code break down once again later when you no
+longer remember how you fixed it in the first place.</p>
+<p>Automated Testing solves this by shifting all of these print debug statements to these Assertions and displaying them this in WAT’s Result Tree.
+Your production code is no longer cluttered with numerous print debug statements but you still have your tests!
+So if you do encounter a bug, any of your tests that fail may give you a greater idea about what happened.
+This is especially potent if you run your tests often and catch bugs early so you know the reason the code broke is something you just did!</p>
+<p>In our test we used the basic <code class="docutils literal notranslate"><span class="pre">is_true</span></code> function but we could have also done either of these (among many others you can see at [assertions].</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asserts</span><span class="o">.</span><span class="n">is_greater_than</span><span class="p">(</span><span class="n">new_x_position</span><span class="p">,</span> <span class="n">old_x_position</span><span class="p">,</span> \
+                         <span class="s2">&quot;Then they have moved to the right of the screen&quot;</span><span class="p">)</span>
+
+<span class="n">asserts</span><span class="o">.</span><span class="n">is_less_than</span><span class="p">(</span><span class="n">old_x_position</span><span class="p">,</span> <span class="n">new_x_position</span><span class="p">,</span> \
+                      <span class="s2">&quot;Then they have moved to the right of the screen&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
