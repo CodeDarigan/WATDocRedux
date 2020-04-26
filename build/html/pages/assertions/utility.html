@@ -34,7 +34,8 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Test Double Assertions" href="test_double.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,10 +92,31 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Recording Properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Parameterized Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Watching Signals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Yielding In Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Test Doubles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assertions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="boolean.html">Boolean Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equality.html">Equality Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file.html">File Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="is_type.html">Is TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="is_not_type.html">Is Not TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="null.html">Null Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object.html">Object Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="property.html">Property Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="range.html">Range Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signal.html">Signal Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">String Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_double.html">Test Double Assertions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utility Assertions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul>
@@ -171,6 +193,52 @@
             
   <div class="section" id="utility-assertions">
 <h1>Utility Assertions<a class="headerlink" href="#utility-assertions" title="Permalink to this headline">¶</a></h1>
+<p>Utility Assertions allow you to invoke special behaviour.</p>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-that"><span class="std std-ref">asserts.that</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-fail"><span class="std std-ref">asserts.fail</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Permalink to this headline">¶</a></h2>
+<ul id="asserts-that">
+<li><p><strong>assert.that</strong> (obj: Object, method: String, args: Array, context: String, pass: String, fail: String):</p>
+<blockquote>
+<div><p>Calls method on obj with args. You can choose to passed in a ready to be formatted string for the pass and failed messages (that
+are typically shown underneath the assertion context message in the display).</p>
+<p>E.g</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">player</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">var</span> <span class="n">weapon</span> <span class="o">=</span> <span class="n">Weapon</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">player</span><span class="o">.</span><span class="n">equip</span><span class="p">(</span><span class="n">weapon</span><span class="p">)</span>
+<span class="k">assert</span><span class="o">.</span><span class="n">that</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="s2">&quot;is_connected&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;attack&quot;</span><span class="p">,</span> <span class="n">weapon</span><span class="p">,</span> <span class="s2">&quot;_on_player_attacked&quot;</span><span class="p">],</span>
+<span class="s2">&quot;Player can attack&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2"> is connected to </span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2"> is not connected to </span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The formatted strings should show as “Object.signal is (not) connected to Object.method”.</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-fail">
+<li><p><strong>asserts.fail</strong> (context: String = “”) -&gt; void:</p>
+<blockquote>
+<div><p>An assert that always fail with an optional context message for unimplemented
+and or unfinished tests.</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
 </div>
 
 
@@ -178,6 +246,13 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="test_double.html" class="btn btn-neutral float-left" title="Test Double Assertions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

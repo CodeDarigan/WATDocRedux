@@ -25,6 +25,7 @@ Welcome to WAT Docs's documentation!
    :maxdepth: 2
    :caption: Tutorials
 
+   Recording Properties <undefined.rst>
    Parameterized Testing <undefined.rst>
    Watching Signals <undefined.rst>
    Yielding In Tests <undefined.rst>
