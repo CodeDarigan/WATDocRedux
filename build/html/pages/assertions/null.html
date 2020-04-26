@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Object Assertions" href="object.html" />
+    <link rel="prev" title="Is Not TYPE Assertions" href="is_not_type.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,10 +93,31 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Recording Properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Parameterized Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Watching Signals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Yielding In Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Test Doubles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assertions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="boolean.html">Boolean Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equality.html">Equality Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file.html">File Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="is_type.html">Is TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="is_not_type.html">Is Not TYPE Assertions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Null Assertions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object.html">Object Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="property.html">Property Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="range.html">Range Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signal.html">Signal Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">String Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_double.html">Test Double Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Assertions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul>
@@ -171,6 +194,38 @@
             
   <div class="section" id="null-assertions">
 <h1>Null Assertions<a class="headerlink" href="#null-assertions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-null"><span class="std std-ref">asserts.is_null</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-null"><span class="std std-ref">asserts.is_not_null</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Permalink to this headline">¶</a></h2>
+<ul id="asserts-is-null">
+<li><p><strong>asserts.is_null</strong> (value: Variant, context: String)</p>
+<blockquote>
+<div><p>Asserts that value is null.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-null">
+<li><p><strong>asserts.is_not_null</strong> (value: Variant, context: String)</p>
+<blockquote>
+<div><p>Asserts that value is not null.</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
 </div>
 
 
@@ -178,6 +233,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="object.html" class="btn btn-neutral float-right" title="Object Assertions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="is_not_type.html" class="btn btn-neutral float-left" title="Is Not TYPE Assertions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
