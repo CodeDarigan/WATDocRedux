@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Null Assertions" href="null.html" />
+    <link rel="prev" title="Is TYPE Assertions" href="is_type.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,10 +93,31 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Recording Properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Parameterized Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Watching Signals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Yielding In Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Test Doubles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assertions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="boolean.html">Boolean Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equality.html">Equality Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file.html">File Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="is_type.html">Is TYPE Assertions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Is Not TYPE Assertions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="null.html">Null Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object.html">Object Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="property.html">Property Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="range.html">Range Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signal.html">Signal Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string.html">String Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_double.html">Test Double Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Assertions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul>
@@ -171,6 +194,278 @@
             
   <div class="section" id="is-not-type-assertions">
 <h1>Is Not TYPE Assertions<a class="headerlink" href="#is-not-type-assertions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-aabb"><span class="std std-ref">asserts.is_not_AABB</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-array"><span class="std std-ref">asserts.is_not_Array</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-basis"><span class="std std-ref">asserts.is_not_Basis</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-color"><span class="std std-ref">asserts.is_not_Color</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-dictionary"><span class="std std-ref">asserts.is_not_Dictionary</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-nodepath"><span class="std std-ref">asserts.is_not_NodePath</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-object"><span class="std std-ref">asserts.is_not_Object</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-plane"><span class="std std-ref">asserts.is_not_Plane</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-poolbytearray"><span class="std std-ref">asserts.is_not_PoolByteArray</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-poolcolorarray"><span class="std std-ref">asserts.is_not_PoolColorArray</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-poolintarray"><span class="std std-ref">asserts.is_not_PoolintArray</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-poolrealarray"><span class="std std-ref">asserts.is_not_PoolRealArray</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-poolstringarray"><span class="std std-ref">asserts.is_not_PoolStringArray</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-poolvector2array"><span class="std std-ref">asserts.is_not_PoolVector2Array</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-poolvector3array"><span class="std std-ref">asserts.is_not_PoolVector3Array</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-quat"><span class="std std-ref">asserts.is_not_Quat</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-rid"><span class="std std-ref">asserts.is_not_RID</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-rect2"><span class="std std-ref">asserts.is_not_Rect2</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-string"><span class="std std-ref">asserts.is_not_String</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-transform"><span class="std std-ref">asserts.is_not_Transform</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-transform2d"><span class="std std-ref">asserts.is_not_Transform2D</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-vector2"><span class="std std-ref">asserts.is_not_Vector2</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-vector3"><span class="std std-ref">asserts.is_not_Vector3</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-bool"><span class="std std-ref">asserts.is_not_bool</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-is-not-float"><span class="std std-ref">asserts.is_not_float</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-is-not-int"><span class="std std-ref">asserts.is_not_int</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Permalink to this headline">¶</a></h2>
+<ul id="asserts-is-not-aabb">
+<li><p><strong>asserts.is_not_AABB</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type AABB.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-array">
+<li><p><strong>asserts.is_not_Array</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Array.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-basis">
+<li><p><strong>asserts.is_not_Basis</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Basis.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-color">
+<li><p><strong>asserts.is_not_Color</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Color.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-dictionary">
+<li><p><strong>asserts.is_not_Dictionary</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Dictionary.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-nodepath">
+<li><p><strong>asserts.is_not_NodePath</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type NodePath.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-object">
+<li><p><strong>asserts.is_not_Object</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Object.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-plane">
+<li><p><strong>asserts.is_not_Plane</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Plane.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-poolbytearray">
+<li><p><strong>asserts.is_not_PoolByteArray</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type PoolByteArray.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-poolcolorarray">
+<li><p><strong>asserts.is_not_PoolColorArray</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type PoolColorArray.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-poolintarray">
+<li><p><strong>asserts.is_not_PoolintArray</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type PoolintArray.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-poolrealarray">
+<li><p><strong>asserts.is_not_PoolRealArray</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type PoolRealArray.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-poolstringarray">
+<li><p><strong>asserts.is_not_PoolStringArray</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type PoolStringArray.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-poolvector2array">
+<li><p><strong>asserts.is_not_PoolVector2Array</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type PoolVector2Array.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-poolvector3array">
+<li><p><strong>asserts.is_not_PoolVector3Array</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type PoolVector3Array.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-quat">
+<li><p><strong>asserts.is_not_Quat</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Quat.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-rid">
+<li><p><strong>asserts.is_not_RID</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type RID.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-rect2">
+<li><p><strong>asserts.is_not_Rect2</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Rect2.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-string">
+<li><p><strong>asserts.is_not_String</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type String.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-transform">
+<li><p><strong>asserts.is_not_Transform</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Transform.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-transform2d">
+<li><p><strong>asserts.is_not_Transform2D</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Transform2D.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-vector2">
+<li><p><strong>asserts.is_not_Vector2</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Vector2.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-vector3">
+<li><p><strong>asserts.is_not_Vector3</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type Vector3.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-bool">
+<li><p><strong>asserts.is_not_bool</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type bool.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-float">
+<li><p><strong>asserts.is_not_float</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type float.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="asserts-is-not-int">
+<li><p><strong>asserts.is_not_int</strong> (value, context: String):</p>
+<blockquote>
+<div><p>Asserts that value is not type int.</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
 </div>
 
 
@@ -178,6 +473,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="null.html" class="btn btn-neutral float-right" title="Null Assertions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="is_type.html" class="btn btn-neutral float-left" title="Is TYPE Assertions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
