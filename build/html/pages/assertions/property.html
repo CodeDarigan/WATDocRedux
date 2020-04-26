@@ -108,7 +108,11 @@
 <li class="toctree-l1"><a class="reference internal" href="is_not_type.html">Is Not TYPE Assertions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="null.html">Null Assertions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="object.html">Object Assertions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Property Assertions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Property Assertions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="range.html">Range Assertions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="signal.html">Signal Assertions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string.html">String Assertions</a></li>
@@ -190,6 +194,40 @@
             
   <div class="section" id="property-assertions">
 <h1>Property Assertions<a class="headerlink" href="#property-assertions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-has"><span class="std std-ref">asserts.has</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-does-not-have"><span class="std std-ref">asserts.does_not_have</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Permalink to this headline">¶</a></h2>
+<ul id="asserts-has">
+<li><p><strong>asserts.has</strong> (value, container, context: String)</p>
+<blockquote>
+<div><p>Asserts that container has value if container is an Array
+or Asserts that a Dictionary has value as a key if container is a Dictionary.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>—</p>
+<ul id="asserts-does-not-have">
+<li><p><strong>asserts.does_not_have</strong> (value, container, context: String)</p>
+<blockquote>
+<div><p>Asserts that container does not have value if container is Array
+or Asserts that a Dictionary does not have value as a key if container is a Dictionary.</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
 </div>
 
 
