@@ -32,9 +32,26 @@ Welcome to WAT Docs's documentation!
 
 .. toctree::
    :maxdepth: 2
+   :caption: Assertions
+
+   Boolean Assertions <pages/assertions/boolean.rst>
+   Equality Assertions <pages/assertions/equality.rst>
+   File Assertions <pages/assertions/file.rst>
+   Is TYPE Assertions <pages/assertions/is_type.rst>
+   Is Not TYPE Assertions <pages/assertions/is_not_type.rst>
+   Null Assertions <pages/assertions/null.rst>
+   Object Assertions <pages/assertions/object.rst>
+   Property Assertions <pages/assertions/property.rst>
+   Range Assertions <pages/assertions/range.rst>
+   Signal Assertions <pages/assertions/signal.rst>
+   String Assertions <pages/assertions/string.rst>
+   Test Double Assertions <pages/assertions/test_double.rst>
+   Utility Assertions <pages/assertions/utility.rst>
+
+.. toctree::
+   :maxdepth: 2
    :caption: API
 
-   Assertions <undefined.rst>
    Command Line Interface <undefined.rst>
    Scene Director <undefined.rst>
    Script Director <undefined.rst>
