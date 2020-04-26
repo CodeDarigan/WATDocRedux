@@ -237,60 +237,120 @@ class through inheritance in Godot.</p>
 </div>
 <div class="section" id="method-descriptions">
 <h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Permalink to this headline">¶</a></h2>
-<ul class="simple" id="asserts-does-not-have-meta">
-<li><p><strong>asserts.object_does_not_have_meta</strong> ()</p></li>
+<ul id="asserts-does-not-have-meta">
+<li><p><strong>asserts.object_does_not_have_meta</strong> (obj: Object, meta: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that obj does not have meta.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-does-not-have-method">
-<li><p><strong>asserts.object_does_not_have_method</strong> ()</p></li>
+<ul id="asserts-does-not-have-method">
+<li><p><strong>asserts.object_does_not_have_method</strong> (obj: Object, method: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that obj does not have method.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-does-not-have-user-signal">
-<li><p><strong>asserts.obect_does_not_have_user_signal</strong> ()</p></li>
+<ul id="asserts-does-not-have-user-signal">
+<li><p><strong>asserts.obect_does_not_have_user_signal</strong> (obj: Object, user_signal: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that obj does not have user_signal</p>
+<p>Note: user signals are added via add_user_signal and are not the same as signals hardcoded into
+a class.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-has-meta">
-<li><p><strong>asserts.object_has_meta</strong> ()</p></li>
+<ul id="asserts-has-meta">
+<li><p><strong>asserts.object_has_meta</strong> (obj: Object, meta: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that obj has meta.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-has-method">
-<li><p><strong>asserts.object_has_method</strong> ()</p></li>
+<ul id="asserts-has-method">
+<li><p><strong>asserts.object_has_method</strong> (obj: Object, method: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that obj has method.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-has-user-signal">
-<li><p><strong>asserts.object_has_user_signal</strong> ()</p></li>
+<ul id="asserts-has-user-signal">
+<li><p><strong>asserts.object_has_user_signal</strong> (obj: Object, user_signal: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that obj has user_signal.</p>
+<p>Note: user signals are added via add_user_signal and are not the same as signals hardcoded into
+a class.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-is-blocking-signals">
-<li><p><strong>asserts.object_is_blocking_signals</strong> ()</p></li>
+<ul id="asserts-is-blocking-signals">
+<li><p><strong>asserts.object_is_blocking_signals</strong> (obj: Object, context: String)</p>
+<blockquote>
+<div><p>Asserts that obj is blocking signals.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-is-connected">
-<li><p><strong>asserts.object_is_connected</strong> ()</p></li>
+<ul id="asserts-is-connected">
+<li><p><strong>asserts.object_is_connected</strong> (emitter: Object, _signal: String, receiver: Object, method: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that emitter._signal is connected to receiver.method.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-is-freed">
-<li><p><strong>asserts.object_is_freed</strong> ()</p></li>
+<ul id="asserts-is-freed">
+<li><p><strong>asserts.object_is_freed</strong> (obj: Object)</p>
+<blockquote>
+<div><p>Asserts that obj is freed.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-is-not-blocking-signals">
-<li><p><strong>asserts.object_is_not_blocking_signals</strong> ()</p></li>
+<ul id="asserts-is-not-blocking-signals">
+<li><p><strong>asserts.object_is_not_blocking_signals</strong> (obj: Object)</p>
+<blockquote>
+<div><p>Asserts that obj is not blocking signals.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-is-not-connected">
-<li><p><strong>asserts.object_is_not_connected</strong> ()</p></li>
+<ul id="asserts-is-not-connected">
+<li><p><strong>asserts.object_is_not_connected</strong> (emitter: Object, _signal: String, receiver: Object, method: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that emitter._signal is not connected to receiver.method.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-is-not-freed">
-<li><p><strong>asserts.object_is_not_freed</strong> ()</p></li>
+<ul id="asserts-is-not-freed">
+<li><p><strong>asserts.object_is_not_freed</strong> (obj: Object)</p>
+<blockquote>
+<div><p>Asserts that obj is not freed.</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-is-not-queued-for-deletion">
-<li><p><strong>asserts.object_is_not_queued_for_deletion</strong> ()</p></li>
+<ul id="asserts-is-not-queued-for-deletion">
+<li><p><strong>asserts.object_is_not_queued_for_deletion</strong> (obj: Object)</p>
+<blockquote>
+<div><p>Asserts that obj is not queued for deletion (from methods such as queue_free())</p>
+</div></blockquote>
+</li>
 </ul>
 <hr class="docutils" />
-<ul class="simple" id="asserts-is-queued-for-deletion">
-<li><p><strong>asserts.object_is_qeued_for_deletion</strong> ()</p></li>
+<ul id="asserts-is-queued-for-deletion">
+<li><p><strong>asserts.object_is_qeued_for_deletion</strong> (obj: Object)</p>
+<blockquote>
+<div><p>Asserts that obj is queued for deletion (from methods such as queue_free())</p>
+</div></blockquote>
+</li>
 </ul>
 </div>
 </div>
