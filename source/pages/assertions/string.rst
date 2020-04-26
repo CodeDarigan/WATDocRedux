@@ -25,7 +25,7 @@ Method Descriptions
 
     Asserts that string contains value.
 
----
+-------------------
 
 .. _asserts.string_does_not_contain:
 
@@ -33,7 +33,7 @@ Method Descriptions
 
     Asserts that string does not contain value.
 
----
+-------------------
 
 .. _asserts.string_begins_with:
 
@@ -41,7 +41,7 @@ Method Descriptions
 
     Asserts that string begins with value.
 
----
+-------------------
 
 .. _asserts.string_does_not_begin_with:
 
@@ -49,7 +49,7 @@ Method Descriptions
 
     Asserts that string does not begin with value.
 
----
+-------------------
 
 .. _asserts.string_ends_with:
 
@@ -57,7 +57,7 @@ Method Descriptions
 
     Asserts that string ends with value.
 
----
+-------------------
 
 .. _asserts.string_does_not_end_with:
 

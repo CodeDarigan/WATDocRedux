@@ -25,7 +25,7 @@ Method Descriptions
 
     Asserts that emitter emitted _signal at least once.
 
----
+------------------------------------
 
 .. _asserts.signal_was_emitted_x_times:
 
@@ -33,13 +33,15 @@ Method Descriptions
 
     Asserts that emitter emitted _signal exactly x times.
 
----
+-------------------------------------
 
 .. _asserts.signal_was_not_emitted:
 
 * **asserts.signal_was_not_emitted** (emitter: Object, _signal: String, context: String)
 
     Asserts that emitter did not emit _signal at all.
+
+---------------------------------------
 
 .. _asserts.signal_was_emitted_with_arguments:
 
