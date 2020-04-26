@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Test Double Assertions" href="test_double.html" />
+    <link rel="prev" title="Signal Assertions" href="signal.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,10 +93,31 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Recording Properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Parameterized Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Watching Signals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Yielding In Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Test Doubles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assertions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="boolean.html">Boolean Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equality.html">Equality Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file.html">File Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="is_type.html">Is TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="is_not_type.html">Is Not TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="null.html">Null Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object.html">Object Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="property.html">Property Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="range.html">Range Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signal.html">Signal Assertions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">String Assertions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-descriptions">Method Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="test_double.html">Test Double Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Assertions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul>
@@ -171,6 +194,78 @@
             
   <div class="section" id="string-assertions">
 <h1>String Assertions<a class="headerlink" href="#string-assertions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-string-contains"><span class="std std-ref">asserts.string_contains</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-string-does-not-contain"><span class="std std-ref">asserts.string_does_not_contain</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-string-begins-with"><span class="std std-ref">asserts.string_begins_with</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-string-does-not-begin-with"><span class="std std-ref">asserts.string_does_not_begin_with</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#asserts-string-ends-with"><span class="std std-ref">asserts.string_ends_with</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#asserts-string-does-not-end-with"><span class="std std-ref">asserts.string_does_not_end_with</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="method-descriptions">
+<h2>Method Descriptions<a class="headerlink" href="#method-descriptions" title="Permalink to this headline">¶</a></h2>
+<ul id="asserts-string-contains">
+<li><p><strong>asserts.string_contains</strong> (value, string: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that string contains value.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>—</p>
+<ul id="asserts-string-does-not-contain">
+<li><p><strong>asserts.string_does_not_contain</strong> (value, string: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that string does not contain value.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>—</p>
+<ul id="asserts-string-begins-with">
+<li><p><strong>asserts.string_begins_with</strong> (value, string: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that string begins with value.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>—</p>
+<ul id="asserts-string-does-not-begin-with">
+<li><p><strong>asserts.string_does_not_begin_with</strong> (value, string: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that string does not begin with value.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>—</p>
+<ul id="asserts-string-ends-with">
+<li><p><strong>asserts.string_ends_with</strong> (value, string: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that string ends with value.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>—</p>
+<ul id="asserts-string-does-not-end-with">
+<li><p><strong>asserts.string_does_not_end_with</strong> (value, string: String, context: String)</p>
+<blockquote>
+<div><p>Asserts that string does not end with value.</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
 </div>
 
 
@@ -178,6 +273,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="test_double.html" class="btn btn-neutral float-right" title="Test Double Assertions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="signal.html" class="btn btn-neutral float-left" title="Signal Assertions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
