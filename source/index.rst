@@ -32,7 +32,7 @@ Welcome to WAT Docs's documentation!
    Test Doubles <undefined.rst>
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Assertions
 
    Boolean Assertions <pages/assertions/boolean.rst>
