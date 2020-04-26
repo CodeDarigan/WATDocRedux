@@ -8,6 +8,7 @@ Methods
 .. list-table::
     :width: 100
 
+    * - :ref:`asserts.is_class_instance<asserts.is_class_instance>`
     * - :ref:`asserts.is_AABB<asserts.is_AABB>`
     * - :ref:`asserts.is_Array<asserts.is_Array>`
     * - :ref:`asserts.is_Basis<asserts.is_Basis>`
@@ -38,6 +39,14 @@ Methods
 ********************
 Method Descriptions
 ********************
+
+.. _asserts.is_class_instance:
+
+* **asserts.is_class_instance** (instance, klass: Script, context: String)
+
+   Asserts instance is of type klass. You can pass in scripts or class names.
+
+-----------------------------
 
 .. _asserts.is_AABB:
 

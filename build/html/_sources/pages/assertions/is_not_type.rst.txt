@@ -8,6 +8,7 @@ Methods
 .. list-table::
     :width: 100
 
+    * - :ref:`asserts.is_not_class_instance<asserts.is_not_class_instance>`
     * - :ref:`asserts.is_not_AABB<asserts.is_not_AABB>`
     * - :ref:`asserts.is_not_Array<asserts.is_not_Array>`
     * - :ref:`asserts.is_not_Basis<asserts.is_not_Basis>`
@@ -38,6 +39,14 @@ Methods
 ********************
 Method Descriptions
 ********************
+
+.. _asserts.is_not_class_instance:
+
+* **asserts.is_not_class_instance** (instance, klass: Script, context: String)
+
+    Asserts that instance is not of type klass. You can pass in scripts or class names.
+
+------------------------
 
 .. _asserts.is_not_AABB:
 
