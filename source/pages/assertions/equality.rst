@@ -27,11 +27,15 @@ Method Descriptions
 
 .. _asserts.is_equal_or_greater_than:
 
+------------------
+
 * **asserts.is_equal_or_greater_than** (a: Variant, b: Variant, context: String)
 
     Asserts that a is equal or greater than b.
 
 .. _asserts.is_equal_or_less_than:
+
+----------------
 
 * **asserts.is_equal_or_less_than** (a: Variant, b: Variant, context: String)
 
@@ -39,17 +43,23 @@ Method Descriptions
 
 .. _asserts.is_greater_than:
 
+--------------------
+
 * **asserts.is_greater_than** (a: Variant, b: Variant, context: String)
 
     Asserts that a is greater than b.
 
 .. _asserts.is_less_than:
 
+------------------
+
 * **asserts.is_less_than** (a: Variant, b: Variant, context: String)
 
     Asserts that a is less than b.
 
 .. _asserts.is_not_equal:
+
+----------------
 
 * **asserts.is_not_equal** (a: Variant, b: Variant, context: String)
 

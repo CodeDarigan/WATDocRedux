@@ -21,6 +21,8 @@ Method Descriptions
 
     Asserts that value is true.
 
+-----------------------
+
 .. _asserts.is_false:
 
 * **asserts.is_false** (value: Variant, context: String)
