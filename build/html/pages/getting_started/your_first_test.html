@@ -93,10 +93,27 @@
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Recording Properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Parameterized Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Watching Signals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Yielding In Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Test Doubles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assertions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/boolean.html">Boolean Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/equality.html">Equality Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/file.html">File Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/is_type.html">Is TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/is_not_type.html">Is Not TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/null.html">Null Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/object.html">Object Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/property.html">Property Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/range.html">Range Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/signal.html">Signal Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/string.html">String Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/test_double.html">Test Double Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/utility.html">Utility Assertions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul>
@@ -195,33 +212,15 @@
     <span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">direction</span> <span class="o">*</span> <span class="n">SPEED</span> <span class="o">*</span> <span class="n">delta</span>
 </pre></div>
 </div>
-<p>Create a folder called <code class="docutils literal notranslate"><span class="pre">tests</span></code> in your Project’s main folder then create a script named <code class="docutils literal notranslate"><span class="pre">player.test.gd</span></code> that extends <code class="docutils literal notranslate"><span class="pre">WAT.Test</span></code>
-and store it in that folder. This script is known as a <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Suite</span></code>.</p>
-<p>The first thing we need to do is to give our test a title. By convention the title is written as <code class="docutils literal notranslate"><span class="pre">Given</span> <span class="pre">a</span> <span class="pre">X</span></code> where X is the class being tested. In this
-case we’re testing the <code class="docutils literal notranslate"><span class="pre">Player</span></code> class so following convention we will give it the name <code class="docutils literal notranslate"><span class="pre">Given</span> <span class="pre">a</span> <span class="pre">Player</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extends</span> <span class="n">WAT</span><span class="o">.</span><span class="n">Test</span>
-
-<span class="n">func</span> <span class="n">title</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s2">&quot;Given A Player&quot;</span>
-</pre></div>
-</div>
-<p>WAT will call this function and use the returned String internally. Similar to how _ready and _process work in Godot itself.</p>
-<p>A <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Suite</span></code> is a collection of <code class="docutils literal notranslate"><span class="pre">Tests</span></code> where each test is a unique function. In WAT these functions are prefixed with the term <code class="docutils literal notranslate"><span class="pre">test</span></code>. This prefix
+<p>Create a folder called tests in your Project’s main folder then create a script named <code class="docutils literal notranslate"><span class="pre">player.test.gd</span></code> that extends <code class="docutils literal notranslate"><span class="pre">WAT.Test</span></code>
+and store it in that folder. This script is known as a Test Suite.</p>
+<p>A Test Suite is a collection of Tests where each test is a unique function. In WAT these functions are prefixed with the term test. This prefix
 is necessary for WAT to seperate the functions that are tests from the functions that are not.</p>
-<p>By convention the name of these test functions are written as “When X” where X is an event. In our case we
-are testing when the player walks forward. So with the necessary test prefix and a convention together we get <code class="docutils literal notranslate"><span class="pre">test_when_they_walk_forward</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extends</span> <span class="n">WAT</span><span class="o">.</span><span class="n">Test</span>
-
-<span class="n">func</span> <span class="n">title</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s2">&quot;Given A Player&quot;</span>
 
 <span class="n">func</span> <span class="n">test_when_they_walk_forward</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-    <span class="n">describe</span><span class="p">(</span><span class="s2">&quot;When they walk forward&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The first thing to do when creating a test function is to call the describe function and pass in a String with the name of the test.
-This is a necessary action otherwise our tests will crash.
-It also allows for us to use special characters if necessary such <code class="docutils literal notranslate"><span class="pre">%</span></code> or <code class="docutils literal notranslate"><span class="pre">$</span></code> and so on to give our tests a more precise name.</p>
 <p>Let’s step back for a moment before we write the test itself and just remind ourselves of what we’re testing. In this case we want to make sure our instance of
 the <code class="docutils literal notranslate"><span class="pre">Player</span></code> class can <code class="docutils literal notranslate"><span class="pre">walk_forward</span></code> but what are we looking for in our results? Well let’s check the code again:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">walk_forward</span><span class="p">(</span><span class="n">delta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
@@ -239,14 +238,7 @@ if our x position has increased.</p>
 <p>With our goal in mind, let’s write our test!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extends</span> <span class="n">WAT</span><span class="o">.</span><span class="n">Test</span>
 
-<span class="n">func</span> <span class="n">title</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s2">&quot;Given A Player&quot;</span>
-
-<span class="n">func</span> <span class="n">test_when_they_walk_forward</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-    <span class="n">describe</span><span class="p">(</span><span class="s2">&quot;When they walk forward&quot;</span><span class="p">)</span>
-
-<span class="n">func</span> <span class="n">test_when_they_walk_forward</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-    <span class="n">describe</span><span class="p">(</span><span class="s2">&quot;When they walk forward&quot;</span><span class="p">)</span>
+<span class="n">func</span> <span class="n">test_when_they_walk_forward_then_they_have_moved_to_the_right_of_the_screen</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
 
     <span class="c1"># Arrange</span>
     <span class="n">var</span> <span class="n">player</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
@@ -257,8 +249,7 @@ if our x position has increased.</p>
 
     <span class="c1"># Assert</span>
     <span class="n">var</span> <span class="n">new_x_position</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
-    <span class="n">asserts</span><span class="o">.</span><span class="n">is_true</span><span class="p">(</span><span class="n">previous_x_position</span> <span class="o">&lt;</span> <span class="n">new_x_position</span><span class="p">,</span> \
-                     <span class="s2">&quot;Then they have moved to the right of the screen&quot;</span><span class="p">)</span>
+    <span class="n">asserts</span><span class="o">.</span><span class="n">is_true</span><span class="p">(</span><span class="n">previous_x_position</span> <span class="o">&lt;</span> <span class="n">new_x_position</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We seperate our test body into three distinct parts; Arrange, Act &amp; Assert.</p>
