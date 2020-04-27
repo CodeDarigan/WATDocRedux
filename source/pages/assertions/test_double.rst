@@ -7,6 +7,9 @@ Assertions to be used on Test Doubles.
 Methods
 ********
 
+.. list-table::
+    :widths: 100
+
     * - :ref:`asserts.was_called<asserts.was_called>`
     * - :ref:`asserts.was_not_called<asserts.was_not_called>`
     * - :ref:`asserts.was_called_with_arguments<asserts.was_called_with_arguments>`
