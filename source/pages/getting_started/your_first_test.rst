@@ -60,7 +60,7 @@ With our goal in mind, let's write our test!
 
     extends WAT.Test
 
-    func test_when_they_walk_forward_then_they_have_moved_to_the_right_of_the_screen() -> void:
+    func test_when_a_player_walks_forward_then_they_have_moved_to_the_right_of_the_screen() -> void:
 
         # Arrange
         var player = Player.new()
