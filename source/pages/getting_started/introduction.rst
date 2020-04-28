@@ -1,5 +1,72 @@
+Introduction
+=============
+
+*************
+What is WAT?
+*************
+
+WAT is an automated testing plugin for [Godot].
+
+**********************
+What You Need To Know
+**********************
+
+Automated Testing is an advanced topic in programming. This documentation assumes you have a basic working knowledge
+of both programming fundamentals and at the very least a passing understanding of the Godot Engine API.
+
+***************************
+What is Automated Testing?
+***************************
+
+Have you ever been unsure if a returned value was correct or if the method returning that value was even being called in the first place and in your
+frustration you've added a print statement to make sure? If you're reading this I don't doubt that you have! Everybody tests!
+
+::
+
+    class_name Player
+
+    var coin: int
+    var inventory: Inventory
+
+    func buy(item: Item) -> void:
+        print("player is buying " + item)
+        if coin => item.cost:
+            coin -= item.cost
+            inventory.add(item)
+
+This is a example of manual Unit Test. A Unit Test tests a unit of code, in this case our unit is the
+buy method of the Player object.
+
+There are three main problems with manual testing like this:
+
+1. Slow - You must run the test manually and set it into the correct state to test this. This can get very tedious depending on what you're testing
+and how many times you are testing it. 
+  
+2. Cluttered - Your code becomes cluttered with print statements and it is hard to seperate what is your game from what is your tests.
+
+3. Refactoring is a risk - Game Development is full of interacting systems which means refactoring one part of your code might break
+another part of your code you weren't expecting to be affected. This can spiral out of control into a negative feedback loop where you're
+too scared to refactor your tests so you don't which makes your code even messier and even scarier to refactor. You can't even be sure what you broke
+assuming you were thorough with your print statements because there is too many output logs to spot the one missing (this is another case of point two).
+
+
+Automated Testing solves these problems (and more) because
+
+1. Fast - Automated Tests by the nature of being automated tests are fast (or at the very least faster than you at testing). After the first time you have created
+your test, all you need to do is to click a button to run it. 
+
+2. Isolated - Automated Tests are methods that are used in a special script known as a "Test Suite" which keeps your tests isolated from your code. 
+
+3. Clarity - Due to the way the Tests are displayed in WAT, when you change code somewhere and it breaks code elsewhere. If you had a test for that now
+broken code, you should be able to navigate directly toward it through the clear use 
+
+3. Clarity - When you change your code and code breaks somewhere else WAT uses a red cross and a white name to show a failed test.
+
+[ShowPassingAndFailedTestsInGUI]
+
+***************
 Your First Test
-================
+***************
 
 We are going to test that our players can walk forward correctly.
 
@@ -26,7 +93,7 @@ We are going to test that our players can walk forward correctly.
         position.x += direction * SPEED * delta
 
 Create a folder called tests in your Project's main folder then create a script named ``player.test.gd`` that extends ``WAT.Test``
-and store it in that folder. This script is known as a Test Suite.
+and store it in that folder. This script is an example of a Test Suite aforementiond in the introduction.
 
 A Test Suite is a collection of Tests where each test is a unique function. In WAT these functions are prefixed with the term test. This prefix
 is necessary for WAT to seperate the functions that are tests from the functions that are not.
@@ -62,16 +129,33 @@ With our goal in mind, let's write our test!
 
     func test_when_a_player_walks_forward_they_moved_to_the_right() -> void:
 
-        # Arrange
         var player = Player.new()
-        var previous_x_position = player.position.x
-
-        # Act
         player.walk_forward()
+        asserts.is_true(0 < player.position.x)
 
-        # Assert
-        var new_x_position = player.position.x
-        asserts.is_true(previous_x_position < new_x_position)
+(Our player's default position is Vector2(0, 0) so any x value greater than 0 is a success)
+
+Open up WAT by clicking on the "Tests" Button near the bottom middle of Godot. This will open the
+WAT GUI where in the top left you can see a play button. Click that to run all tests. If all went well you should
+have seen a screen like this.
+
+[RESULTSCREEN]
+
+***********
+Assertions
+***********
+
+Asserts vs Manual Test Methods (display, inner-workings)
+
+*******************
+Arrange-Act-Assert
+*******************
+
+****************
+A Detailed View
+****************
+
+option describe and context messages, conventions like given-when-then
 
 We seperate our test body into three distinct parts; Arrange, Act & Assert.
 

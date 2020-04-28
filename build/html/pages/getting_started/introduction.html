@@ -88,9 +88,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#what-you-need-to-know">What You Need To Know</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-automated-testing">What is Automated Testing?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#your-first-test">Your First Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#assertions">Assertions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arrange-act-assert">Arrange-Act-Assert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-detailed-view">A Detailed View</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Test Fixtures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/faq.html">Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -176,7 +180,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/pages/getting_started/your_first_test.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/pages/getting_started/introduction.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -193,7 +197,7 @@
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="what-is-wat">
 <h2>What is WAT?<a class="headerlink" href="#what-is-wat" title="Permalink to this headline">¶</a></h2>
-<p>WAT is an automated testing plugin for the [Godot] game engine.</p>
+<p>WAT is an automated testing plugin for [Godot].</p>
 </div>
 <div class="section" id="what-you-need-to-know">
 <h2>What You Need To Know<a class="headerlink" href="#what-you-need-to-know" title="Permalink to this headline">¶</a></h2>
@@ -202,36 +206,44 @@ of both programming fundamentals and at the very least a passing understanding o
 </div>
 <div class="section" id="what-is-automated-testing">
 <h2>What is Automated Testing?<a class="headerlink" href="#what-is-automated-testing" title="Permalink to this headline">¶</a></h2>
-<p>Have you ever been unsure if a function was returning the right value or even be called at all in the first place?
-And in your attempts to verify this you’ve written examples like the following</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">damage</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">attacker</span><span class="o">.</span><span class="n">calculate_damage</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">damage</span><span class="p">)</span>
+<p>Have you ever been unsure if a returned value was correct or if the method returning that value was even being called in the first place and in your
+frustration you’ve added a print statement to make sure? If you’re reading this I don’t doubt that you have! Everybody tests!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">class_name</span> <span class="n">Player</span>
+
+<span class="n">var</span> <span class="n">coin</span><span class="p">:</span> <span class="nb">int</span>
+<span class="n">var</span> <span class="n">inventory</span><span class="p">:</span> <span class="n">Inventory</span>
+
+<span class="n">func</span> <span class="n">buy</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">Item</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;player is buying &quot;</span> <span class="o">+</span> <span class="n">item</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">coin</span> <span class="o">=&gt;</span> <span class="n">item</span><span class="o">.</span><span class="n">cost</span><span class="p">:</span>
+        <span class="n">coin</span> <span class="o">-=</span> <span class="n">item</span><span class="o">.</span><span class="n">cost</span>
+        <span class="n">inventory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">calculate_damage</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;calculate_damage was called&quot;</span><span class="p">)</span>
-    <span class="o">//</span> <span class="n">code</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">battle</span><span class="p">(</span><span class="n">player</span><span class="p">:</span> <span class="n">Object</span><span class="p">,</span> <span class="n">attacker</span><span class="p">:</span> <span class="n">Object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
-    <span class="o">//</span> <span class="n">code</span>
-    <span class="n">var</span> <span class="n">damage</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">attacker</span><span class="o">.</span><span class="n">calculate_damage</span><span class="p">()</span>
-    <span class="n">var</span> <span class="n">before_damage_check</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">health</span>
-    <span class="n">player</span><span class="o">.</span><span class="n">take_damage</span><span class="p">(</span><span class="n">damage</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">health</span> <span class="o">==</span> <span class="n">before_damage_check</span> <span class="o">-</span> <span class="n">damage</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>All of the previous code examples are a naive form of [Unit Tests].</p>
-<p>These tests are fine by themselves but games are not simple (even the simple ones are not simple)! The problems start to begin
-when your game grows in size and now your code is cluttered with print statements everywhere! You start to have to needlessly spend your
-mental energy on figuring out which code is game code and which code is test code.</p>
-<p>You could choose to remove the old tests but then when a bug appears it may have been useful to have those tests just to make sure that
-isn’t what’s causing the bug. Ask yourself if you have ever solved a bug only for it to reappear later when you no longer remember how
-to fix it!</p>
-<p>Automated Testing provides solutions for this by allowing you create scripts known as [Test Suites] isolated from your game code
-with a number of methods known as [Tests] that you can run at the click of a button.</p>
-<p>Results are displayed inside a Godot Dock when you run tests in WAT</p>
-<p>[Results Panel]</p>
+<p>This is a example of manual Unit Test. A Unit Test tests a unit of code, in this case our unit is the
+buy method of the Player object.</p>
+<p>There are three main problems with manual testing like this:</p>
+<p>1. Slow - You must run the test manually and set it into the correct state to test this. This can get very tedious depending on what you’re testing
+and how many times you are testing it.</p>
+<ol class="arabic simple" start="2">
+<li><p>Cluttered - Your code becomes cluttered with print statements and it is hard to seperate what is your game from what is your tests.</p></li>
+</ol>
+<p>3. Refactoring is a risk - Game Development is full of interacting systems which means refactoring one part of your code might break
+another part of your code you weren’t expecting to be affected. This can spiral out of control into a negative feedback loop where you’re
+too scared to refactor your tests so you don’t which makes your code even messier and even scarier to refactor. You can’t even be sure what you broke
+assuming you were thorough with your print statements because there is too many output logs to spot the one missing (this is another case of point two).</p>
+<p>Automated Testing solves these problems (and more) because</p>
+<p>1. Fast - Automated Tests by the nature of being automated tests are fast (or at the very least faster than you at testing). After the first time you have created
+your test, all you need to do is to click a button to run it.</p>
+<ol class="arabic simple" start="2">
+<li><p>Isolated - Automated Tests are methods that are used in a special script known as a “Test Suite” which keeps your tests isolated from your code.</p></li>
+</ol>
+<p>3. Clarity - Due to the way the Tests are displayed in WAT, when you change code somewhere and it breaks code elsewhere. If you had a test for that now
+broken code, you should be able to navigate directly toward it through the clear use</p>
+<ol class="arabic simple" start="3">
+<li><p>Clarity - When you change your code and code breaks somewhere else WAT uses a red cross and a white name to show a failed test.</p></li>
+</ol>
+<p>[ShowPassingAndFailedTestsInGUI]</p>
 </div>
 <div class="section" id="your-first-test">
 <h2>Your First Test<a class="headerlink" href="#your-first-test" title="Permalink to this headline">¶</a></h2>
@@ -258,7 +270,7 @@ with a number of methods known as [Tests] that you can run at the click of a but
 </pre></div>
 </div>
 <p>Create a folder called tests in your Project’s main folder then create a script named <code class="docutils literal notranslate"><span class="pre">player.test.gd</span></code> that extends <code class="docutils literal notranslate"><span class="pre">WAT.Test</span></code>
-and store it in that folder. This script is known as a Test Suite.</p>
+and store it in that folder. This script is an example of a Test Suite aforementiond in the introduction.</p>
 <p>A Test Suite is a collection of Tests where each test is a unique function. In WAT these functions are prefixed with the term test. This prefix
 is necessary for WAT to seperate the functions that are tests from the functions that are not.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extends</span> <span class="n">WAT</span><span class="o">.</span><span class="n">Test</span>
@@ -285,18 +297,27 @@ if our x position has increased.</p>
 
 <span class="n">func</span> <span class="n">test_when_a_player_walks_forward_they_moved_to_the_right</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
 
-    <span class="c1"># Arrange</span>
     <span class="n">var</span> <span class="n">player</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-    <span class="n">var</span> <span class="n">previous_x_position</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
-
-    <span class="c1"># Act</span>
     <span class="n">player</span><span class="o">.</span><span class="n">walk_forward</span><span class="p">()</span>
-
-    <span class="c1"># Assert</span>
-    <span class="n">var</span> <span class="n">new_x_position</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
-    <span class="n">asserts</span><span class="o">.</span><span class="n">is_true</span><span class="p">(</span><span class="n">previous_x_position</span> <span class="o">&lt;</span> <span class="n">new_x_position</span><span class="p">)</span>
+    <span class="n">asserts</span><span class="o">.</span><span class="n">is_true</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>(Our player’s default position is Vector2(0, 0) so any x value greater than 0 is a success)</p>
+<p>Open up WAT by clicking on the “Tests” Button near the bottom middle of Godot. This will open the
+WAT GUI where in the top left you can see a play button. Click that to run all tests. If all went well you should
+have seen a screen like this.</p>
+<p>[RESULTSCREEN]</p>
+</div>
+<div class="section" id="assertions">
+<h2>Assertions<a class="headerlink" href="#assertions" title="Permalink to this headline">¶</a></h2>
+<p>Asserts vs Manual Test Methods (display, inner-workings)</p>
+</div>
+<div class="section" id="arrange-act-assert">
+<h2>Arrange-Act-Assert<a class="headerlink" href="#arrange-act-assert" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="a-detailed-view">
+<h2>A Detailed View<a class="headerlink" href="#a-detailed-view" title="Permalink to this headline">¶</a></h2>
+<p>option describe and context messages, conventions like given-when-then</p>
 <p>We seperate our test body into three distinct parts; Arrange, Act &amp; Assert.</p>
 <p>In the Arrange step we create an instance of our Player class and get its current position. This is our set of preconditions, we need a player
 instance so we can move it and we need its current position so we can compare against our future position.</p>
