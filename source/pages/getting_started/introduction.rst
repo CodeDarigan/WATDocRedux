@@ -147,7 +147,7 @@ Open up WAT by clicking on the "Tests" Button near the bottom middle of Godot. T
 WAT GUI where in the top left you can see a play button. Click that to run all tests. If all went well you should
 have seen a screen like this.
 
-[RESULTSCREEN]
+.. image:: imgs/results.png
 
 ***********
 Assertions
@@ -229,3 +229,69 @@ In this example we create a player and grabs its position before every test and 
 Previously we mentioned getting into the correct state for a manual test can take a long time. These test-hooks allow you to setup that complicated state
 and have it refresh per every test in the script which is one of the major benefits of automed testing. Not only that but by using hooks you can make the tests
 themselves avoid clutter and focus on what's really important a per test basis.
+
+***********************
+A Detailed String View
+***********************
+
+So far when we have run our tests we have gotten an image like this.
+
+.. image:: imgs/results.png
+
+Which shows us the sanitized path of the Test Suite and the test method name. WAT comes with three helper methods to give these names
+better clarity for those who want them.
+
+Every Test Suite has a title() method that users are intended to override to return a String. This will replace the test script path with
+(hopefully) a clearer name in the results display.
+
+::
+
+    extends WAT.Test
+
+    func title() -> String:
+        return "Given A Player"
+
+Any time you run a test method, you can call the describe method which takes a String and will replace the test method name with that String in the
+results display.
+
+.. image:: imgs/given.png
+
+::
+
+    extends WAT.Test
+
+    func title() -> String:
+        return "Given A Player"
+
+    func test_when_a_player_walks_forward_they_move_to_the_right() -> void:
+        describe("When a they walks forward")
+
+.. image:: imgs/when.png
+
+And any assertion method you use has an optional context string as the very last argument which makes that assertion show up in the results display
+with that context string.
+
+
+::
+
+    extends WAT.Test
+
+    func title() -> String:
+        return "Given A Player"
+
+    func test_when_a_player_walks_forward_they_move_to_the_right() -> void:
+        describe("When they walk forward")
+
+        var player = Player.new()
+        var previous_position = player.position.x
+        player.walk_forward()
+        asserts.is_greater_than(player.position.x, previous_position, "Then they have moved to the right")
+
+.. image:: imgs/then.png
+
+You can also check the basic details of that assertion by clicking on it (if you didn't include the context string for that
+assertion, you can find the details by clicking on the method name).
+
+.. image:: imgs/details.png
+
+    

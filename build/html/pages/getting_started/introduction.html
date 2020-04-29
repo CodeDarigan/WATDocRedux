@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="UNDEFINED" href="../../undefined.html" />
+    <link rel="next" title="Exploring WAT’s UI" href="interface.html" />
     <link rel="prev" title="Installing WAT" href="install.html" /> 
 </head>
 
@@ -90,9 +90,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#your-first-test">Your First Test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#assertions">Assertions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#test-fixture-methods">Test Fixture Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-detailed-string-view">A Detailed String View</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Test Fixtures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">Exploring WAT's UI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../general/faq.html">Frequently Asked Questions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
@@ -326,7 +327,7 @@ if our x position has increased.</p>
 <p>Open up WAT by clicking on the “Tests” Button near the bottom middle of Godot. This will open the
 WAT GUI where in the top left you can see a play button. Click that to run all tests. If all went well you should
 have seen a screen like this.</p>
-<p>[RESULTSCREEN]</p>
+<img alt="../../_images/results.png" src="../../_images/results.png" />
 </div>
 <div class="section" id="assertions">
 <h2>Assertions<a class="headerlink" href="#assertions" title="Permalink to this headline">¶</a></h2>
@@ -397,6 +398,54 @@ before each test method (so if we have two tests pre() is ran twice) and post() 
 and have it refresh per every test in the script which is one of the major benefits of automed testing. Not only that but by using hooks you can make the tests
 themselves avoid clutter and focus on what’s really important a per test basis.</p>
 </div>
+<div class="section" id="a-detailed-string-view">
+<h2>A Detailed String View<a class="headerlink" href="#a-detailed-string-view" title="Permalink to this headline">¶</a></h2>
+<p>So far when we have run our tests we have gotten an image like this.</p>
+<img alt="../../_images/results.png" src="../../_images/results.png" />
+<p>Which shows us the sanitized path of the Test Suite and the test method name. WAT comes with three helper methods to give these names
+better clarity for those who want them.</p>
+<p>Every Test Suite has a title() method that users are intended to override to return a String. This will replace the test script path with
+(hopefully) a clearer name in the results display.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extends</span> <span class="n">WAT</span><span class="o">.</span><span class="n">Test</span>
+
+<span class="n">func</span> <span class="n">title</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;Given A Player&quot;</span>
+</pre></div>
+</div>
+<p>Any time you run a test method, you can call the describe method which takes a String and will replace the test method name with that String in the
+results display.</p>
+<img alt="../../_images/given.png" src="../../_images/given.png" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extends</span> <span class="n">WAT</span><span class="o">.</span><span class="n">Test</span>
+
+<span class="n">func</span> <span class="n">title</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;Given A Player&quot;</span>
+
+<span class="n">func</span> <span class="n">test_when_a_player_walks_forward_they_move_to_the_right</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
+    <span class="n">describe</span><span class="p">(</span><span class="s2">&quot;When a they walks forward&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../../_images/when.png" src="../../_images/when.png" />
+<p>And any assertion method you use has an optional context string as the very last argument which makes that assertion show up in the results display
+with that context string.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extends</span> <span class="n">WAT</span><span class="o">.</span><span class="n">Test</span>
+
+<span class="n">func</span> <span class="n">title</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;Given A Player&quot;</span>
+
+<span class="n">func</span> <span class="n">test_when_a_player_walks_forward_they_move_to_the_right</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
+    <span class="n">describe</span><span class="p">(</span><span class="s2">&quot;When they walk forward&quot;</span><span class="p">)</span>
+
+    <span class="n">var</span> <span class="n">player</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+    <span class="n">var</span> <span class="n">previous_position</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">walk_forward</span><span class="p">()</span>
+    <span class="n">asserts</span><span class="o">.</span><span class="n">is_greater_than</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">previous_position</span><span class="p">,</span> <span class="s2">&quot;Then they have moved to the right&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../../_images/then.png" src="../../_images/then.png" />
+<p>You can also check the basic details of that assertion by clicking on it (if you didn’t include the context string for that
+assertion, you can find the details by clicking on the method name).</p>
+<img alt="../../_images/details.png" src="../../_images/details.png" />
+</div>
 </div>
 
 
@@ -407,7 +456,7 @@ themselves avoid clutter and focus on what’s really important a per test basis
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../undefined.html" class="btn btn-neutral float-right" title="UNDEFINED" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="interface.html" class="btn btn-neutral float-right" title="Exploring WAT’s UI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="install.html" class="btn btn-neutral float-left" title="Installing WAT" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
