@@ -12,13 +12,13 @@ Welcome to WAT Docs's documentation!
 
    Installing WAT <pages/getting_started/install.rst>
    Introduction <pages/getting_started/introduction.rst>
-   Exploring WAT's UI <pages/getting_started/interface.rst>
    Frequently Asked Questions <pages/general/faq.rst>
 
 .. toctree::
    :maxdepth: 2
    :caption: Tutorials
 
+   Using The GUI <pages/tutorials/using_the_gui.rst>
    Recording Properties <undefined.rst>
    Parameterized Testing <undefined.rst>
    Watching Signals <undefined.rst>
@@ -47,7 +47,6 @@ Welcome to WAT Docs's documentation!
    :maxdepth: 2
    :caption: API
 
-   Command Line Interface <undefined.rst>
    Scene Director <undefined.rst>
    Script Director <undefined.rst>
    Signal Watcher <undefined.rst>
