@@ -89,8 +89,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#what-is-automated-testing">What is Automated Testing?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#your-first-test">Your First Test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#assertions">Assertions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#arrange-act-assert">Arrange-Act-Assert</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-detailed-view">A Detailed View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-fixture-methods">Test Fixture Methods</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Test Fixtures</a></li>
@@ -222,28 +221,49 @@ frustration you’ve added a print statement to make sure? If you’re reading t
 </div>
 <p>This is a example of manual Unit Test. A Unit Test tests a unit of code, in this case our unit is the
 buy method of the Player object.</p>
-<p>There are three main problems with manual testing like this:</p>
-<p>1. Slow - You must run the test manually and set it into the correct state to test this. This can get very tedious depending on what you’re testing
-and how many times you are testing it.</p>
-<ol class="arabic simple" start="2">
-<li><p>Cluttered - Your code becomes cluttered with print statements and it is hard to seperate what is your game from what is your tests.</p></li>
-</ol>
-<p>3. Refactoring is a risk - Game Development is full of interacting systems which means refactoring one part of your code might break
+<p>There are three main problems with manual testing like this;</p>
+<ul>
+<li><p><strong>Slow</strong></p>
+<blockquote>
+<div><p>You must run the test manually and set it into the correct state to test this. This can get very tedious depending on
+what you’re testing and how many times you are testing it.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Cluttered</strong></p>
+<blockquote>
+<div><p>Your code becomes cluttered with print statements and it is hard to seperate what is your game from what is your tests.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Refactoring is risky</strong></p>
+<blockquote>
+<div><p>Game Development is full of interacting systems which means refactoring one part of your code might break
 another part of your code you weren’t expecting to be affected. This can spiral out of control into a negative feedback loop where you’re
 too scared to refactor your tests so you don’t which makes your code even messier and even scarier to refactor. You can’t even be sure what you broke
 assuming you were thorough with your print statements because there is too many output logs to spot the one missing (this is another case of point two).</p>
-<p>Automated Testing solves these problems (and more) because</p>
-<p>1. Fast - Automated Tests by the nature of being automated tests are fast (or at the very least faster than you at testing). After the first time you have created
+</div></blockquote>
+</li>
+</ul>
+<p>Automated Testing solves these problems (and more) because;</p>
+<ul>
+<li><p><strong>Fast</strong></p>
+<blockquote>
+<div><p>Automated Tests by the nature of being automated tests are fast (or at the very least faster than you at testing). After the first time you have created
 your test, all you need to do is to click a button to run it.</p>
-<ol class="arabic simple" start="2">
-<li><p>Isolated - Automated Tests are methods that are used in a special script known as a “Test Suite” which keeps your tests isolated from your code.</p></li>
-</ol>
-<p>3. Clarity - Due to the way the Tests are displayed in WAT, when you change code somewhere and it breaks code elsewhere. If you had a test for that now
-broken code, you should be able to navigate directly toward it through the clear use</p>
-<ol class="arabic simple" start="3">
-<li><p>Clarity - When you change your code and code breaks somewhere else WAT uses a red cross and a white name to show a failed test.</p></li>
-</ol>
+</div></blockquote>
+</li>
+<li><p><strong>Isolated</strong></p>
+<blockquote>
+<div><p>Automated Tests are methods that are used in a special script known as a “Test Suite” which keeps your tests isolated from your code.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Clarity</strong></p>
+<blockquote>
+<div><p>When you change your code and code breaks somewhere else WAT uses a red cross and a white name to show a failed test (as shown below) so it is easy
+to locate what is broken without pouring through a waterfall of print outputs.</p>
 <p>[ShowPassingAndFailedTestsInGUI]</p>
+</div></blockquote>
+</li>
+</ul>
 </div>
 <div class="section" id="your-first-test">
 <h2>Your First Test<a class="headerlink" href="#your-first-test" title="Permalink to this headline">¶</a></h2>
@@ -295,14 +315,14 @@ if our x position has increased.</p>
 <p>With our goal in mind, let’s write our test!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extends</span> <span class="n">WAT</span><span class="o">.</span><span class="n">Test</span>
 
-<span class="n">func</span> <span class="n">test_when_a_player_walks_forward_they_moved_to_the_right</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
+<span class="n">func</span> <span class="n">test_when_a_player_walks_forward_they_move_to_the_right</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
 
     <span class="n">var</span> <span class="n">player</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+    <span class="n">var</span> <span class="n">previous_position</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
     <span class="n">player</span><span class="o">.</span><span class="n">walk_forward</span><span class="p">()</span>
-    <span class="n">asserts</span><span class="o">.</span><span class="n">is_true</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">asserts</span><span class="o">.</span><span class="n">is_true</span><span class="p">(</span><span class="n">previous_position</span> <span class="o">&lt;</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(Our player’s default position is Vector2(0, 0) so any x value greater than 0 is a success)</p>
 <p>Open up WAT by clicking on the “Tests” Button near the bottom middle of Godot. This will open the
 WAT GUI where in the top left you can see a play button. Click that to run all tests. If all went well you should
 have seen a screen like this.</p>
@@ -310,44 +330,72 @@ have seen a screen like this.</p>
 </div>
 <div class="section" id="assertions">
 <h2>Assertions<a class="headerlink" href="#assertions" title="Permalink to this headline">¶</a></h2>
-<p>Asserts vs Manual Test Methods (display, inner-workings)</p>
+<p>WAT uses special methods from the assert property (known as assertions) instead of a print statement. This allows WAT to track which
+tests did or didn’t pass and allows that information to be passed onto the display. In our case we used the asserts.is_true</p>
+<p>WAT uses custom objects known as assertions which are created by using methods from the assert property. These are used instead of print statements so
+WAT can track which tests passed/failed and how to display that information depending on wheter you’re using the GUI or the Command Line.</p>
+<p>In our test above we used the asserts.is_true method which checks if a boolean expression is true, however there are a number of other assertion methods you
+can use instead for better clarity. In this case we could have replaced this assertion method with <code class="docutils literal notranslate"><span class="pre">asserts.is_greater_than(player.position.x,</span> <span class="pre">previous_position)</span></code>
+which checks if the first argument is greater than the second argument.</p>
 </div>
-<div class="section" id="arrange-act-assert">
-<h2>Arrange-Act-Assert<a class="headerlink" href="#arrange-act-assert" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="a-detailed-view">
-<h2>A Detailed View<a class="headerlink" href="#a-detailed-view" title="Permalink to this headline">¶</a></h2>
-<p>option describe and context messages, conventions like given-when-then</p>
-<p>We seperate our test body into three distinct parts; Arrange, Act &amp; Assert.</p>
-<p>In the Arrange step we create an instance of our Player class and get its current position. This is our set of preconditions, we need a player
-instance so we can move it and we need its current position so we can compare against our future position.</p>
-<p>In the Act step we tell our player instance to walk_forward. This is the event or action that we’re testing. We’re testing to see if the walk_forward code
-works as we expect it to do.</p>
-<p>In the Assert step we get our new x position and check if it is greater than the older x position. This is our tests postcondition, what we need to
-be true after the code has been executed for our test to pass.</p>
-<p>Click the Play button in WAT (near the top right of the bottom panel) and you should see this screen after a second.</p>
-<img alt="../../_images/your_first_test_results.png" src="../../_images/your_first_test_results.png" />
-<p>In the Assert step of our test body you will have noticed that we didn’t use a simple <code class="docutils literal notranslate"><span class="pre">print(previous_x_position</span> <span class="pre">&lt;</span> <span class="pre">new_x_position)</span></code> check like you may do in
-a naive manual test, instead we called the <code class="docutils literal notranslate"><span class="pre">is_true</span></code> method of our <code class="docutils literal notranslate"><span class="pre">asserts</span></code> property. This is where Automated Testing starts proving its usefulness over
-manual testing.</p>
-<p>The asserts property is a list of functions that wrap common conditional checks. In addition to performing the check, these functions also allow us to add
-a clear diagnostic message (the String we used in our test) which is then shown in our results tree with a green font and a checkmark if correct or
-a red cross and default white font if not.</p>
-<p>In the [introduction] we explained the conundrum manual testing presents to you by forcing you to choose either to have your code cluttered with
-print debug statements OR removing the tests after you’ve finished checking them only to have that code break down once again later when you no
-longer remember how you fixed it in the first place.</p>
-<p>Automated Testing solves this by shifting all of these print debug statements to these Assertions and displaying them this in WAT’s Result Tree.
-Your production code is no longer cluttered with numerous print debug statements but you still have your tests!
-So if you do encounter a bug, any of your tests that fail may give you a greater idea about what happened.
-This is especially potent if you run your tests often and catch bugs early so you know the reason the code broke is something you just did!</p>
-<p>In our test we used the basic <code class="docutils literal notranslate"><span class="pre">is_true</span></code> function but we could have also done either of these (among many others you can see at [assertions].</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asserts</span><span class="o">.</span><span class="n">is_greater_than</span><span class="p">(</span><span class="n">new_x_position</span><span class="p">,</span> <span class="n">old_x_position</span><span class="p">,</span> \
-                         <span class="s2">&quot;Then they have moved to the right of the screen&quot;</span><span class="p">)</span>
+<div class="section" id="test-fixture-methods">
+<h2>Test Fixture Methods<a class="headerlink" href="#test-fixture-methods" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes when you have multiple tests in the same script testing the same object, you may want to extract out the shared logic. WAT allows you to do this
+with special test hook methods.</p>
+<p>You can use start() to set the state of the test before you run any test and use end() to clear any data after you have run every test. In the example
+below we create a player to run tests on and then free it afterward we’ve run every test.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extends</span> <span class="n">WAT</span><span class="o">.</span><span class="n">Test</span>
 
-<span class="n">asserts</span><span class="o">.</span><span class="n">is_less_than</span><span class="p">(</span><span class="n">old_x_position</span><span class="p">,</span> <span class="n">new_x_position</span><span class="p">,</span> \
-                      <span class="s2">&quot;Then they have moved to the right of the screen&quot;</span><span class="p">)</span>
+<span class="n">var</span> <span class="n">player</span><span class="p">:</span> <span class="n">Player</span>
+
+<span class="n">func</span> <span class="n">start</span><span class="p">():</span>
+    <span class="n">player</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+
+<span class="n">func</span> <span class="n">end</span><span class="p">():</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
+
+<span class="n">func</span> <span class="n">test_when_a_player_walks_forward_they_move_to_the_right</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
+
+    <span class="n">var</span> <span class="n">previous_position</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">walk_forward</span><span class="p">()</span>
+    <span class="n">asserts</span><span class="o">.</span><span class="n">is_greater_than</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">previous_position</span><span class="p">)</span>
+
+<span class="n">func</span> <span class="n">test_when_a_player_walks_backward_they_move_to_the_left</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
+
+    <span class="n">var</span> <span class="n">previous_position</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">walk_backward</span><span class="p">()</span>
+    <span class="n">asserts</span><span class="o">.</span><span class="n">is_less_than</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">previous_position</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>There is still some shared logic in this test of getting the player’s previous_position, we could then instead use pre() and post(). The pre() hook runs code
+before each test method (so if we have two tests pre() is ran twice) and post() is ran after every test to clean up.</p>
+<p>In this example we create a player and grabs its position before every test and then free the player after every test.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extends</span> <span class="n">WAT</span><span class="o">.</span><span class="n">Test</span>
+
+<span class="n">var</span> <span class="n">player</span><span class="p">:</span> <span class="n">Player</span>
+<span class="n">var</span> <span class="n">previous_position</span><span class="p">:</span> <span class="nb">int</span>
+
+<span class="n">func</span> <span class="n">pre</span><span class="p">():</span>
+    <span class="n">player</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+    <span class="n">var</span> <span class="n">previous_position</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+
+<span class="n">func</span> <span class="n">post</span><span class="p">():</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>
+
+<span class="n">func</span> <span class="n">test_when_a_player_walks_forward_they_move_to_the_right</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
+
+    <span class="n">player</span><span class="o">.</span><span class="n">walk_forward</span><span class="p">()</span>
+    <span class="n">asserts</span><span class="o">.</span><span class="n">is_greater_than</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">previous_position</span><span class="p">)</span>
+
+<span class="n">func</span> <span class="n">test_when_a_player_walks_backward_they_move_to_the_left</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">void</span><span class="p">:</span>
+
+    <span class="n">player</span><span class="o">.</span><span class="n">walk_backward</span><span class="p">()</span>
+    <span class="n">asserts</span><span class="o">.</span><span class="n">is_less_than</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">previous_position</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Previously we mentioned getting into the correct state for a manual test can take a long time. These test-hooks allow you to setup that complicated state
+and have it refresh per every test in the script which is one of the major benefits of automed testing. Not only that but by using hooks you can make the tests
+themselves avoid clutter and focus on what’s really important a per test basis.</p>
 </div>
 </div>
 

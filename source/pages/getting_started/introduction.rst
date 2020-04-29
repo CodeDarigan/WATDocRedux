@@ -37,32 +37,41 @@ frustration you've added a print statement to make sure? If you're reading this 
 This is a example of manual Unit Test. A Unit Test tests a unit of code, in this case our unit is the
 buy method of the Player object.
 
-There are three main problems with manual testing like this:
+There are three main problems with manual testing like this;
 
-1. Slow - You must run the test manually and set it into the correct state to test this. This can get very tedious depending on what you're testing
-and how many times you are testing it. 
-  
-2. Cluttered - Your code becomes cluttered with print statements and it is hard to seperate what is your game from what is your tests.
+* **Slow**
 
-3. Refactoring is a risk - Game Development is full of interacting systems which means refactoring one part of your code might break
-another part of your code you weren't expecting to be affected. This can spiral out of control into a negative feedback loop where you're
-too scared to refactor your tests so you don't which makes your code even messier and even scarier to refactor. You can't even be sure what you broke
-assuming you were thorough with your print statements because there is too many output logs to spot the one missing (this is another case of point two).
+    You must run the test manually and set it into the correct state to test this. This can get very tedious depending on 
+    what you're testing and how many times you are testing it.
 
+* **Cluttered**
 
-Automated Testing solves these problems (and more) because
+    Your code becomes cluttered with print statements and it is hard to seperate what is your game from what is your tests.
 
-1. Fast - Automated Tests by the nature of being automated tests are fast (or at the very least faster than you at testing). After the first time you have created
-your test, all you need to do is to click a button to run it. 
+* **Refactoring is risky**
 
-2. Isolated - Automated Tests are methods that are used in a special script known as a "Test Suite" which keeps your tests isolated from your code. 
+    Game Development is full of interacting systems which means refactoring one part of your code might break
+    another part of your code you weren't expecting to be affected. This can spiral out of control into a negative feedback loop where you're
+    too scared to refactor your tests so you don't which makes your code even messier and even scarier to refactor. You can't even be sure what you broke
+    assuming you were thorough with your print statements because there is too many output logs to spot the one missing (this is another case of point two).
 
-3. Clarity - Due to the way the Tests are displayed in WAT, when you change code somewhere and it breaks code elsewhere. If you had a test for that now
-broken code, you should be able to navigate directly toward it through the clear use 
+Automated Testing solves these problems (and more) because;
 
-3. Clarity - When you change your code and code breaks somewhere else WAT uses a red cross and a white name to show a failed test.
+* **Fast**
 
-[ShowPassingAndFailedTestsInGUI]
+    Automated Tests by the nature of being automated tests are fast (or at the very least faster than you at testing). After the first time you have created
+    your test, all you need to do is to click a button to run it. 
+
+* **Isolated**
+
+    Automated Tests are methods that are used in a special script known as a "Test Suite" which keeps your tests isolated from your code. 
+
+* **Clarity**
+
+    When you change your code and code breaks somewhere else WAT uses a red cross and a white name to show a failed test (as shown below) so it is easy
+    to locate what is broken without pouring through a waterfall of print outputs.
+
+    [ShowPassingAndFailedTestsInGUI]
 
 ***************
 Your First Test
@@ -127,13 +136,12 @@ With our goal in mind, let's write our test!
 
     extends WAT.Test
 
-    func test_when_a_player_walks_forward_they_moved_to_the_right() -> void:
+    func test_when_a_player_walks_forward_they_move_to_the_right() -> void:
 
         var player = Player.new()
+        var previous_position = player.position.x
         player.walk_forward()
-        asserts.is_true(0 < player.position.x)
-
-(Our player's default position is Vector2(0, 0) so any x value greater than 0 is a success)
+        asserts.is_true(previous_position < player.position.x)
 
 Open up WAT by clicking on the "Tests" Button near the bottom middle of Godot. This will open the
 WAT GUI where in the top left you can see a play button. Click that to run all tests. If all went well you should
@@ -145,56 +153,79 @@ have seen a screen like this.
 Assertions
 ***********
 
-Asserts vs Manual Test Methods (display, inner-workings)
+WAT uses special methods from the assert property (known as assertions) instead of a print statement. This allows WAT to track which
+tests did or didn't pass and allows that information to be passed onto the display. In our case we used the asserts.is_true  
 
-*******************
-Arrange-Act-Assert
-*******************
+WAT uses custom objects known as assertions which are created by using methods from the assert property. These are used instead of print statements so
+WAT can track which tests passed/failed and how to display that information depending on wheter you're using the GUI or the Command Line.
 
-****************
-A Detailed View
-****************
+In our test above we used the asserts.is_true method which checks if a boolean expression is true, however there are a number of other assertion methods you
+can use instead for better clarity. In this case we could have replaced this assertion method with ``asserts.is_greater_than(player.position.x, previous_position)``
+which checks if the first argument is greater than the second argument.
 
-option describe and context messages, conventions like given-when-then
+*********************
+Test Fixture Methods
+*********************
 
-We seperate our test body into three distinct parts; Arrange, Act & Assert.
+Sometimes when you have multiple tests in the same script testing the same object, you may want to extract out the shared logic. WAT allows you to do this
+with special test hook methods.  
 
-In the Arrange step we create an instance of our Player class and get its current position. This is our set of preconditions, we need a player
-instance so we can move it and we need its current position so we can compare against our future position.
-
-In the Act step we tell our player instance to walk_forward. This is the event or action that we're testing. We're testing to see if the walk_forward code
-works as we expect it to do.
-
-In the Assert step we get our new x position and check if it is greater than the older x position. This is our tests postcondition, what we need to
-be true after the code has been executed for our test to pass. 
-
-Click the Play button in WAT (near the top right of the bottom panel) and you should see this screen after a second.
-
-.. image:: your_first_test_results.png
-
-In the Assert step of our test body you will have noticed that we didn't use a simple ``print(previous_x_position < new_x_position)`` check like you may do in
-a naive manual test, instead we called the ``is_true`` method of our ``asserts`` property. This is where Automated Testing starts proving its usefulness over
-manual testing.
-
-The asserts property is a list of functions that wrap common conditional checks. In addition to performing the check, these functions also allow us to add
-a clear diagnostic message (the String we used in our test) which is then shown in our results tree with a green font and a checkmark if correct or 
-a red cross and default white font if not. 
-
-In the [introduction] we explained the conundrum manual testing presents to you by forcing you to choose either to have your code cluttered with 
-print debug statements OR removing the tests after you've finished checking them only to have that code break down once again later when you no 
-longer remember how you fixed it in the first place.
-
-Automated Testing solves this by shifting all of these print debug statements to these Assertions and displaying them this in WAT's Result Tree.
-Your production code is no longer cluttered with numerous print debug statements but you still have your tests! 
-So if you do encounter a bug, any of your tests that fail may give you a greater idea about what happened. 
-This is especially potent if you run your tests often and catch bugs early so you know the reason the code broke is something you just did!
-
-In our test we used the basic ``is_true`` function but we could have also done either of these (among many others you can see at [assertions].
+You can use start() to set the state of the test before you run any test and use end() to clear any data after you have run every test. In the example
+below we create a player to run tests on and then free it afterward we've run every test.
 
 ::
 
-    asserts.is_greater_than(new_x_position, old_x_position, \
-                             "Then they have moved to the right of the screen")
+    extends WAT.Test
 
-    asserts.is_less_than(old_x_position, new_x_position, \
-                          "Then they have moved to the right of the screen")
+    var player: Player
+
+    func start():
+        player = Player.new()
+
+    func end():
+        player.free()
+
+    func test_when_a_player_walks_forward_they_move_to_the_right() -> void:
+
+        var previous_position = player.position.x
+        player.walk_forward()
+        asserts.is_greater_than(player.position.x, previous_position)
+
+    func test_when_a_player_walks_backward_they_move_to_the_left() -> void:
+
+        var previous_position = player.position.x
+        player.walk_backward()
+        asserts.is_less_than(player.position.x, previous_position)
+
+There is still some shared logic in this test of getting the player's previous_position, we could then instead use pre() and post(). The pre() hook runs code
+before each test method (so if we have two tests pre() is ran twice) and post() is ran after every test to clean up. 
+
+In this example we create a player and grabs its position before every test and then free the player after every test.
+
+::
+
+    extends WAT.Test
+
+    var player: Player
+    var previous_position: int
+
+    func pre():
+        player = Player.new()
+        var previous_position = player.position.x
+
+    func post():
+        player.free()
+
+    func test_when_a_player_walks_forward_they_move_to_the_right() -> void:
+
+        player.walk_forward()
+        asserts.is_greater_than(player.position.x, previous_position)
+
+    func test_when_a_player_walks_backward_they_move_to_the_left() -> void:
+
+        player.walk_backward()
+        asserts.is_less_than(player.position.x, previous_position)
+
+Previously we mentioned getting into the correct state for a manual test can take a long time. These test-hooks allow you to setup that complicated state
+and have it refresh per every test in the script which is one of the major benefits of automed testing. Not only that but by using hooks you can make the tests
+themselves avoid clutter and focus on what's really important a per test basis.

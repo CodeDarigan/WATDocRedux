@@ -12,7 +12,7 @@ Welcome to WAT Docs's documentation!
 
    Installing WAT <pages/getting_started/install.rst>
    Introduction <pages/getting_started/introduction.rst>
-   Test Fixtures <undefined.rst>
+   Exploring WAT's UI <pages/getting_started/interface.rst>
    Frequently Asked Questions <pages/general/faq.rst>
 
 .. toctree::
