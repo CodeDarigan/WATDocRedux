@@ -200,10 +200,17 @@ entering the command: “godot addons/WAT/cli.tscn -?” where ? is one of the f
 <p>e.g run_script=res://tests/unit/player.test.gd</p>
 </div></blockquote>
 </li>
-<li><p>run_method=?</p>
+<li><p>run_method=X?=Y?</p>
 <blockquote>
 <div><p>Runs ? where is a single test method.</p>
-<p>e.g xxxx</p>
+<p>Runs test method Y? of test script X?</p>
+<p>e.g run_script=res://tests/unit/player.test.gd=test_when_a_player_faints</p>
+</div></blockquote>
+</li>
+<li><p>run_tag=?</p>
+<blockquote>
+<div><p>Runs all tests that share ? where ? is a tag</p>
+<p>e.g run_tag=battle</p>
 </div></blockquote>
 </li>
 <li><p>list_all</p>

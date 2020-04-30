@@ -24,11 +24,19 @@ Commands
 
     e.g run_script=res://tests/unit/player.test.gd
 
-* run_method=?
+* run_method=X?=Y?
 
     Runs ? where is a single test method.
 
-    e.g xxxx
+    Runs test method Y? of test script X?
+
+    e.g run_script=res://tests/unit/player.test.gd=test_when_a_player_faints
+
+* run_tag=?
+
+    Runs all tests that share ? where ? is a tag
+
+    e.g run_tag=battle
 
 * list_all
 
