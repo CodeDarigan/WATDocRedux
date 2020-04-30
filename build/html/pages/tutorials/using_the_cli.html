@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using The CLI &mdash; WAT Docs 4.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Boolean Assertions" href="../assertions/boolean.html" />
+    <link rel="prev" title="UNDEFINED" href="../../undefined.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> WAT Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installing WAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="using_the_gui.html">Using The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Test Doubles</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using The Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#repeating-tests">Repeating Tests</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Assertions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/boolean.html">Boolean Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/equality.html">Equality Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/file.html">File Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/is_type.html">Is TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/is_not_type.html">Is Not TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/null.html">Null Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/object.html">Object Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/property.html">Property Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/range.html">Range Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/signal.html">Signal Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/string.html">String Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/test_double.html">Test Double Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/utility.html">Utility Assertions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">WAT Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Using The CLI</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/tutorials/using_the_cli.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-the-cli">
+<h1>Using The CLI<a class="headerlink" href="#using-the-cli" title="Permalink to this headline">¶</a></h1>
+<p>You can run WAT from the command line by navigating to your project’s root directory and then
+entering the command: “godot addons/WAT/cli.tscn -?” where ? is one of the following commands</p>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>run_all</p>
+<blockquote>
+<div><p>Runs all tests in your test directory</p>
+</div></blockquote>
+</li>
+<li><p>run_dir=?</p>
+<blockquote>
+<div><p>Runs all tests in ? where ? is a subdirectory</p>
+<p>e.g run_dir=res://tests/unit/</p>
+</div></blockquote>
+</li>
+<li><p>run_script=?</p>
+<blockquote>
+<div><p>Runs ? where ? is a single test suite.</p>
+<p>e.g run_script=res://tests/unit/player.test.gd</p>
+</div></blockquote>
+</li>
+<li><p>run_method=?</p>
+<blockquote>
+<div><p>Runs ? where is a single test method.</p>
+<p>e.g xxxx</p>
+</div></blockquote>
+</li>
+<li><p>list_all</p>
+<blockquote>
+<div><p>Lists all test scripts in your tests folder</p>
+</div></blockquote>
+</li>
+<li><p>list_dir=?</p>
+<blockquote>
+<div><p>Lists all tests in ? where ? is a subdirectory</p>
+<p>e.g list_dir=res://tests/unit/</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="repeating-tests">
+<h2>Repeating Tests<a class="headerlink" href="#repeating-tests" title="Permalink to this headline">¶</a></h2>
+<p>To repeat a test x times, enter one of the commands above appended by =X where X
+is the amount of times to repeat the test.</p>
+<p>e.g run_all=2</p>
+<p>This example will run all tests twice</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../assertions/boolean.html" class="btn btn-neutral float-right" title="Boolean Assertions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../undefined.html" class="btn btn-neutral float-left" title="UNDEFINED" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, https://github.com/CodeDarigan
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -21,7 +21,7 @@ Welcome to WAT Docs's documentation!
    Using The GUI <pages/tutorials/using_the_gui.rst>
    Utility Methods <pages/tutorials/utility.rst>
    Test Doubles <undefined.rst>
-   Using The Command Line <undefined.rst>
+   Using The Command Line <pages/tutorials/using_the_cli.rst>
 
 .. toctree::
    :maxdepth: 1
