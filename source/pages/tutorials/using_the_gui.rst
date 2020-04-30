@@ -113,3 +113,15 @@ of a method name in the results view and WAT will do its best to take you direct
 a few lines)
 
 .. image:: imgs/goto_method.png
+
+************************
+Repositioning The Panel
+************************
+
+You can move the WAT GUI anywhere by going to ProjectSettings -> WAT and selecting a position from the Display drop down.
+
+.. image:: imgs/reposition.png
+
+And then it will change its position automatically
+
+.. image:: imgs/repositioned.png
