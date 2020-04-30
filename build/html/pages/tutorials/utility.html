@@ -92,11 +92,13 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Utility Methods</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#parameterized-testing">Parameterized Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#recording-properties">Recording Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulate">Simulate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#watching-signals">Watching Signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#yielding-in-tests">Yielding In Tests</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Test Doubles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Using The Command Line</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Assertions</span></p>
 <ul>
@@ -182,15 +184,51 @@
 <p># TODO Introduction</p>
 <div class="section" id="parameterized-testing">
 <h2>Parameterized Testing<a class="headerlink" href="#parameterized-testing" title="Permalink to this headline">¶</a></h2>
+<p>You may find yourself repeating whole tests with the same structure where the only difference is the input data. You can solve this
+by using the parameters() within a single test method which takes an array of arrays.</p>
+<img alt="../../_images/calc_test.png" src="../../_images/calc_test.png" />
+<p>The first nested array takes a collection of strings. These strings will be used as keys in our internal p (for parameters) object. The arrays
+after the first contain the values we are going to use each time we run the test. So in our first test we will use 2, 2, 4 where p.addend is 2,
+p.augend is 2 and p.result is 4. In our second test p.addend is 5, p.augend is 3, p.result is 8 and so on and so forth. This test will be repeated
+equal to the number of arrays (minus one for the first) inside the outer array.</p>
+<img alt="../../_images/calc_test_repeated.png" src="../../_images/calc_test_repeated.png" />
 </div>
 <div class="section" id="recording-properties">
 <h2>Recording Properties<a class="headerlink" href="#recording-properties" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes values change during the course of the game; You’re hero may be taking poison damage that changes their health over time.</p>
+<p>If you want to track a time sensitive change, you can use the record method.</p>
+<img alt="../../_images/hero.png" src="../../_images/hero.png" />
+<p>The record method takes an object and an array of strings. These strings must be the name of a property on the object you passed in. It will
+return a Recorder Object that you can start and stop. Below we are recording the hero’s health after being poisoned for a second.</p>
+<img alt="../../_images/recorder_test.png" src="../../_images/recorder_test.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[YIELD INFORMATION]</p>
+</div>
+<p>You can retrieve an Array of values by using the recorder.get_property_timeline(property: String) method where property is one of the Strings you passed
+in on the record method. In this case we’re getting the range of different health values our hero has had and then checking that their current health value
+is lower than our previous health value.</p>
+<p>You can track multiple properties of one object from one Recorder Object but you cannot track multiple Objects from one Recorder. You will need to create
+a Recorder per object that you are tracking.</p>
+</div>
+<div class="section" id="simulate">
+<h2>Simulate<a class="headerlink" href="#simulate" title="Permalink to this headline">¶</a></h2>
+<p>[TODO]</p>
 </div>
 <div class="section" id="watching-signals">
 <h2>Watching Signals<a class="headerlink" href="#watching-signals" title="Permalink to this headline">¶</a></h2>
+<p>You can use the watch method to track what objects emit which signals:</p>
+<img alt="../../_images/watching.png" src="../../_images/watching.png" />
+<p>You pass in the object you want to watch and which signal you want to track. You can use [signal assertion links goes here] to track
+more specific properties of the emitted signals (such as what parameters were passed in).</p>
 </div>
 <div class="section" id="yielding-in-tests">
 <h2>Yielding In Tests<a class="headerlink" href="#yielding-in-tests" title="Permalink to this headline">¶</a></h2>
+<p>until_timeout()
+until_signal()
+use in fixture Methods
+currying values through a return or emit_signal(s, 1, 2, 3, 4, 5, 6) etc
+null exceptions</p>
 </div>
 </div>
 
