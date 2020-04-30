@@ -19,10 +19,7 @@ Welcome to WAT Docs's documentation!
    :caption: Tutorials
 
    Using The GUI <pages/tutorials/using_the_gui.rst>
-   Recording Properties <undefined.rst>
-   Parameterized Testing <undefined.rst>
-   Watching Signals <undefined.rst>
-   Yielding In Tests <undefined.rst>
+   Utility Methods <pages/tutorials/utility.rst>
    Test Doubles <undefined.rst>
 
 .. toctree::
@@ -42,17 +39,6 @@ Welcome to WAT Docs's documentation!
    String Assertions <pages/assertions/string.rst>
    Test Double Assertions <pages/assertions/test_double.rst>
    Utility Assertions <pages/assertions/utility.rst>
-
-.. toctree::
-   :maxdepth: 2
-   :caption: API
-
-   Scene Director <undefined.rst>
-   Script Director <undefined.rst>
-   Signal Watcher <undefined.rst>
-   Test Suite <undefined.rst>
-   Test Suite of Suites <undefined.rst>
-   Yielder <undefined.rst>
 
 Indices and tables
 ==================
