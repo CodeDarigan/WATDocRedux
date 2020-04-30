@@ -202,45 +202,58 @@
 <p>Click the play button in the top left of the WAT GUI to run all of your tests in your
 test directory (this will also run tests in subdirectories of the test directory).</p>
 <p>(You can also click “Run All” on the Run Menu that is beside the play button)</p>
-<p>[IMAGE]</p>
+<img alt="../../_images/run_quickplay.png" src="../../_images/run_quickplay.png" />
 </div>
 <div class="section" id="running-a-subdirectory">
 <h2>Running A Subdirectory<a class="headerlink" href="#running-a-subdirectory" title="Permalink to this headline">¶</a></h2>
 <p>You can group your different tests by directory (e.g You can seperate your tests by putting them in fast or slow
 subdirectories). To select a subdirectory to run, you can choose it from the drop down menu closest to the left of
 the screen and then press “Run Selected Directory” from the Run Menu.</p>
+<img alt="../../_images/select_subdir.png" src="../../_images/select_subdir.png" />
+<img alt="../../_images/run_subdir.png" src="../../_images/run_subdir.png" />
 </div>
 <div class="section" id="running-a-single-test-suite">
 <h2>Running A Single Test Suite<a class="headerlink" href="#running-a-single-test-suite" title="Permalink to this headline">¶</a></h2>
 <p>You can run single tests by choosing a single test script from the middle drop down menu and then press “Run Selected Script”</p>
+<img alt="../../_images/select_script.png" src="../../_images/select_script.png" />
+<img alt="../../_images/run_script.png" src="../../_images/run_script.png" />
 </div>
 <div class="section" id="running-a-single-test-method">
 <h2>Running A Single Test Method<a class="headerlink" href="#running-a-single-test-method" title="Permalink to this headline">¶</a></h2>
 <p>To run a single test method within a script you first need to select the script. Then press the + button to the top right of the GUI
 which will reveal another drop down menu. Choose the test method you want to run from this and then click “Run Method” from the Run Menu.</p>
+<img alt="../../_images/open_method.png" src="../../_images/open_method.png" />
+<img alt="../../_images/run_method.png" src="../../_images/run_method.png" />
 </div>
 <div class="section" id="repeating-tests">
 <h2>Repeating Tests<a class="headerlink" href="#repeating-tests" title="Permalink to this headline">¶</a></h2>
 <p>You can tell WAT to repeat running the test x times before displaying it. This will display the test that amount of times you have run it. This
 can help you identify a problem when dealing with erratic tests that sometimes fail and sometimes don’t.</p>
 <p>To repeat these tests, enter the amount of times you want the test to repeat in the SpinBox near the top right of the GUI.</p>
+<img alt="../../_images/repeated_results.png" src="../../_images/repeated_results.png" />
 </div>
 <div class="section" id="running-failed-test-methods">
 <h2>Running Failed Test Methods<a class="headerlink" href="#running-failed-test-methods" title="Permalink to this headline">¶</a></h2>
 <p>If you ran a number of tests with only some failing, you can choose to</p>
 <p>To rerun tests that have failed, you can press the “Rerun Failures” from the Run Menu which will only run the tests that have failed.</p>
+<img alt="../../_images/rerun_failures.png" src="../../_images/rerun_failures.png" />
 <p>WAT keeps track of failures, so if you have left your project one day to come back to it another. You can choose rerun failures and it
 should rerun the failed tests since your last run.</p>
 </div>
 <div class="section" id="running-tagged-scripts">
 <h2>Running Tagged Scripts<a class="headerlink" href="#running-tagged-scripts" title="Permalink to this headline">¶</a></h2>
 <p>When you click on a saved test script, you should see it open up in an inspector plugin where you see something like this:</p>
-<p>[image]</p>
+<img alt="../../_images/tagplugin.png" src="../../_images/tagplugin.png" />
 <p>When you click on “Add New Tag” the first time, nothing will show. You will need to manually add tags to your
-tag list in ProjectSettings -&gt; WAT -&gt; Tags. Afterwards you can click on Add New Tag and then a list of all the available
-tags will show up.</p>
+tag list in ProjectSettings -&gt; WAT -&gt; Tags.</p>
+<img alt="../../_images/adding_tags.png" src="../../_images/adding_tags.png" />
+<p>Afterwards you can click on Add New Tag and then a list of all the available tags will show up.</p>
+<img alt="../../_images/select_tags.png" src="../../_images/select_tags.png" />
+<img alt="../../_images/unit_tag_selected.png" src="../../_images/unit_tag_selected.png" />
 <p>To run a group of tests with a shared tag, you can choose which tag by selecting it from the right-most drop down menu (if
 any are available) and then press “Run Tagged” from the Run Menu.</p>
+<img alt="../../_images/select_tagged.png" src="../../_images/select_tagged.png" />
+<img alt="../../_images/run_tagged.png" src="../../_images/run_tagged.png" />
 </div>
 <div class="section" id="inspecting-the-test">
 <h2>Inspecting The Test<a class="headerlink" href="#inspecting-the-test" title="Permalink to this headline">¶</a></h2>
@@ -250,9 +263,11 @@ also see that string popup. By opening the assertion message you will see the ba
 a context string for this assertion then it will appear under the method name instead).</p>
 <p>You can find the view menu beside the run menu. This will allow you to expand all information or collapse all information. You can
 also expand all information from only the failed tests.</p>
+<img alt="../../_images/view_menu.png" src="../../_images/view_menu.png" />
 <p>If the information presented here isn’t enough or if you want to double check, you can click on the function icon at the right end
 of a method name in the results view and WAT will do its best to take you directly to that method in the script editor (give or take
 a few lines)</p>
+<img alt="../../_images/goto_method.png" src="../../_images/goto_method.png" />
 </div>
 </div>
 
