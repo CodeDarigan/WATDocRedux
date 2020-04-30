@@ -1,9 +1,9 @@
 Using The GUI
 ==============
 
-// TODO: Add Images
-
 Click "Tests" on the middle bottom of Godot to open WAT's GUI.
+
+.. image:: imgs/open_tests.png
 
 ******************
 Running All Tests
