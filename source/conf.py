@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'WAT Docs'
+project = 'WAT'
 copyright = '2020, https://github.com/CodeDarigan'
 author = 'https://github.com/CodeDarigan'
 master_doc = 'index'
