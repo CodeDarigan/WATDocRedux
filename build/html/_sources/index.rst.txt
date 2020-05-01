@@ -20,7 +20,7 @@ Welcome to WAT Docs's documentation!
 
    Using The GUI <pages/tutorials/using_the_gui.rst>
    Utility Methods <pages/tutorials/utility.rst>
-   Test Doubles <undefined.rst>
+   Test Doubles <pages/tutorials/test_doubles.rst>
    Using The Command Line <pages/tutorials/using_the_cli.rst>
 
 .. toctree::

@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Test Doubles &mdash; WAT Docs 4.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using The CLI" href="using_the_cli.html" />
+    <link rel="prev" title="Utility Methods" href="utility.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> WAT Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installing WAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="using_the_gui.html">Using The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility.html">Utility Methods</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Test Doubles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#script-director">Script Director</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-director">Method Director</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#test-dummy">Test Dummy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-spy">Test Spy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subcalls">Subcalls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scene-director">Scene Director</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="using_the_cli.html">Using The Command Line</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assertions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/boolean.html">Boolean Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/equality.html">Equality Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/file.html">File Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/is_type.html">Is TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/is_not_type.html">Is Not TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/null.html">Null Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/object.html">Object Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/property.html">Property Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/range.html">Range Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/signal.html">Signal Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/string.html">String Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/test_double.html">Test Double Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assertions/utility.html">Utility Assertions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">WAT Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Test Doubles</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/tutorials/test_doubles.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="test-doubles">
+<h1>Test Doubles<a class="headerlink" href="#test-doubles" title="Permalink to this headline">¶</a></h1>
+<p>THIS PAGE IS UNDER CONSTRUCTION</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="script-director">
+<h2>Script Director<a class="headerlink" href="#script-director" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="method-director">
+<h2>Method Director<a class="headerlink" href="#method-director" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="test-dummy">
+<h3>Test Dummy<a class="headerlink" href="#test-dummy" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="test-spy">
+<h3>Test Spy<a class="headerlink" href="#test-spy" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="subcalls">
+<h3>Subcalls<a class="headerlink" href="#subcalls" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="scene-director">
+<h2>Scene Director<a class="headerlink" href="#scene-director" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="using_the_cli.html" class="btn btn-neutral float-right" title="Using The CLI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="utility.html" class="btn btn-neutral float-left" title="Utility Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, https://github.com/CodeDarigan
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

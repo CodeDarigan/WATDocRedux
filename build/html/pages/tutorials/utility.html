@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="UNDEFINED" href="../../undefined.html" />
+    <link rel="next" title="Using The CLI" href="using_the_cli.html" />
     <link rel="prev" title="Using The GUI" href="using_the_gui.html" /> 
 </head>
 
@@ -97,8 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#yielding-in-tests">Yielding In Tests</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Test Doubles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../undefined.html">Using The Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_the_cli.html">Using The Command Line</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Assertions</span></p>
 <ul>
@@ -185,7 +184,7 @@
 <div class="section" id="parameterized-testing">
 <h2>Parameterized Testing<a class="headerlink" href="#parameterized-testing" title="Permalink to this headline">¶</a></h2>
 <p>You may find yourself repeating whole tests with the same structure where the only difference is the input data. You can solve this
-by using the parameters() within a single test method which takes an array of arrays.</p>
+by using the builtin parameters() method within a single test method which takes an array of arrays.</p>
 <img alt="../../_images/calc_test.png" src="../../_images/calc_test.png" />
 <p>The first nested array takes a collection of strings. These strings will be used as keys in our internal p (for parameters) object. The arrays
 after the first contain the values we are going to use each time we run the test. So in our first test we will use 2, 2, 4 where p.addend is 2,
@@ -201,10 +200,6 @@ equal to the number of arrays (minus one for the first) inside the outer array.<
 <p>The record method takes an object and an array of strings. These strings must be the name of a property on the object you passed in. It will
 return a Recorder Object that you can start and stop. Below we are recording the hero’s health after being poisoned for a second.</p>
 <img alt="../../_images/recorder_test.png" src="../../_images/recorder_test.png" />
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>[YIELD INFORMATION]</p>
-</div>
 <p>You can retrieve an Array of values by using the recorder.get_property_timeline(property: String) method where property is one of the Strings you passed
 in on the record method. In this case we’re getting the range of different health values our hero has had and then checking that their current health value
 is lower than our previous health value.</p>
@@ -213,7 +208,12 @@ a Recorder per object that you are tracking.</p>
 </div>
 <div class="section" id="simulate">
 <h2>Simulate<a class="headerlink" href="#simulate" title="Permalink to this headline">¶</a></h2>
-<p>[TODO]</p>
+<p>Sometimes you may want to track if a change is happening over time but you may not actually care to wait for that amount of time. WAT uses the
+simulate method to call _process and _physics_process on Node Object and all of its descendants in quick cycles.</p>
+<img alt="../../_images/hero.png" src="../../_images/hero.png" />
+<img alt="../../_images/simulate.png" src="../../_images/simulate.png" />
+<p>In this example we’re calling simulate on a poisoned Hero node (who has the poison node as a child). We’re repeating their _process method 100 times
+along with a delta value of 0.1 in order to check our Hero does indeed have no health after 100 cycles.</p>
 </div>
 <div class="section" id="watching-signals">
 <h2>Watching Signals<a class="headerlink" href="#watching-signals" title="Permalink to this headline">¶</a></h2>
@@ -224,11 +224,20 @@ more specific properties of the emitted signals (such as what parameters were pa
 </div>
 <div class="section" id="yielding-in-tests">
 <h2>Yielding In Tests<a class="headerlink" href="#yielding-in-tests" title="Permalink to this headline">¶</a></h2>
-<p>until_timeout()
-until_signal()
-use in fixture Methods
-currying values through a return or emit_signal(s, 1, 2, 3, 4, 5, 6) etc
-null exceptions</p>
+<p>You may want to use yield when dealing with time sensitive methods such as a cast time for a spell</p>
+<img alt="../../_images/spell.png" src="../../_images/spell.png" />
+<p>This may cause a problem where your test not only fails but also prevents other tests from running because that timer or signal never went off.</p>
+<p>WAT solves this problem by introducing with the methods until_timeout() and until_signal().</p>
+<img alt="../../_images/casted_spell.png" src="../../_images/casted_spell.png" />
+<p>To pause a test call until_timeout(time: float) as the first argument of a yield statement. WAT will pause the test for that amount of time. The second
+argument of the yield statement is the YIELD constant builtin of the Test Suite. This is used by WAT to unpause the test.</p>
+<img alt="../../_images/spell_casted_signal.png" src="../../_images/spell_casted_signal.png" />
+<p>To wait for a signal when testing call until_signal(time: float, emitter: Object, event: String). WAT will wait until either emitter emits the event Signal
+or if time runs out (whichever comes from). This will prevent your tests from hanging if the signal is never emitted.</p>
+<p>You can also inspect arguments emitted along with the signal.</p>
+<img alt="../../_images/emit_values.png" src="../../_images/emit_values.png" />
+<p>Yielding until a signal will return an Array of up to 6 values that default to Null. These values will be any values that was emitted along side the
+signal.</p>
 </div>
 </div>
 
@@ -240,7 +249,7 @@ null exceptions</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../undefined.html" class="btn btn-neutral float-right" title="UNDEFINED" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="using_the_cli.html" class="btn btn-neutral float-right" title="Using The CLI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="using_the_gui.html" class="btn btn-neutral float-left" title="Using The GUI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

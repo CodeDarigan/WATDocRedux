@@ -8,7 +8,7 @@ Parameterized Testing
 **********************
 
 You may find yourself repeating whole tests with the same structure where the only difference is the input data. You can solve this
-by using the parameters() within a single test method which takes an array of arrays.
+by using the builtin parameters() method within a single test method which takes an array of arrays.
 
 .. image:: imgs/calc_test.png
 
@@ -34,9 +34,6 @@ return a Recorder Object that you can start and stop. Below we are recording the
 
 .. image:: imgs/recorder_test.png
 
-.. note::
-    [YIELD INFORMATION]
-
 You can retrieve an Array of values by using the recorder.get_property_timeline(property: String) method where property is one of the Strings you passed
 in on the record method. In this case we're getting the range of different health values our hero has had and then checking that their current health value
 is lower than our previous health value.
@@ -48,7 +45,15 @@ a Recorder per object that you are tracking.
 Simulate
 *********
 
-[TODO]
+Sometimes you may want to track if a change is happening over time but you may not actually care to wait for that amount of time. WAT uses the
+simulate method to call _process and _physics_process on Node Object and all of its descendants in quick cycles. 
+
+.. image:: imgs/hero.png
+.. image:: imgs/simulate.png
+
+In this example we're calling simulate on a poisoned Hero node (who has the poison node as a child). We're repeating their _process method 100 times
+along with a delta value of 0.1 in order to check our Hero does indeed have no health after 100 cycles.
+
 
 *****************
 Watching Signals
@@ -65,8 +70,27 @@ more specific properties of the emitted signals (such as what parameters were pa
 Yielding In Tests
 ******************
 
-until_timeout()
-until_signal()
-use in fixture Methods
-currying values through a return or emit_signal(s, 1, 2, 3, 4, 5, 6) etc
-null exceptions
+You may want to use yield when dealing with time sensitive methods such as a cast time for a spell 
+
+.. image:: imgs/spell.png
+
+This may cause a problem where your test not only fails but also prevents other tests from running because that timer or signal never went off. 
+
+WAT solves this problem by introducing with the methods until_timeout() and until_signal().
+
+.. image:: imgs/casted_spell.png
+
+To pause a test call until_timeout(time: float) as the first argument of a yield statement. WAT will pause the test for that amount of time. The second
+argument of the yield statement is the YIELD constant builtin of the Test Suite. This is used by WAT to unpause the test. 
+
+.. image:: imgs/spell_casted_signal.png
+
+To wait for a signal when testing call until_signal(time: float, emitter: Object, event: String). WAT will wait until either emitter emits the event Signal
+or if time runs out (whichever comes from). This will prevent your tests from hanging if the signal is never emitted.
+
+You can also inspect arguments emitted along with the signal.
+
+.. image:: imgs/emit_values.png
+
+Yielding until a signal will return an Array of up to 6 values that default to Null. These values will be any values that was emitted along side the
+signal.
