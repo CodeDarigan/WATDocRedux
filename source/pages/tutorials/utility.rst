@@ -1,7 +1,7 @@
 Utility Methods
 ================
 
-# TODO Introduction
+WAT includes a number of Utility Methods in its base Test Suite to help users handle common difficulties in testing.
 
 **********************
 Parameterized Testing
