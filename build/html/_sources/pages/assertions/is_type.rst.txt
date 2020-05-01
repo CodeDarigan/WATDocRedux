@@ -6,7 +6,7 @@ Methods
 ********
 
 .. list-table::
-    :width: 100
+    :widths: 100
 
     * - :ref:`asserts.is_class_instance<asserts.is_class_instance>`
     * - :ref:`asserts.is_AABB<asserts.is_AABB>`

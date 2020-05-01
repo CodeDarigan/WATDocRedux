@@ -6,7 +6,7 @@ Methods
 ********
 
 .. list-table::
-    :width: 100
+    :widths: 100
 
     * - :ref:`asserts.has<asserts.has>`
     * - :ref:`asserts.does_not_have<asserts.does_not_have>`
