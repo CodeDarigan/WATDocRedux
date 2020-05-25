@@ -1,6 +1,7 @@
 C# API Differences
 ===================
 
+* You still extend from WAT.Test (WAT is a namespace)
 * func title -> public override String Title
 * func start() -> public override Start()
 * func pre() -> public override void Pre()

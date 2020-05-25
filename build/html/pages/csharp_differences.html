@@ -34,7 +34,8 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Utility Assertions" href="assertions/utility.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -107,6 +108,14 @@
 <li class="toctree-l1"><a class="reference internal" href="assertions/test_double.html">Test Double Assertions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assertions/utility.html">Utility Assertions</a></li>
 </ul>
+<p class="caption"><span class="caption-text">C# Support</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">C# API Differences</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-wat-sharp">Installing WAT-Sharp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
 
             
           
@@ -173,6 +182,7 @@
   <div class="section" id="c-api-differences">
 <h1>C# API Differences<a class="headerlink" href="#c-api-differences" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
+<li><p>You still extend from WAT.Test (WAT is a namespace)</p></li>
 <li><p>func title -&gt; public override String Title</p></li>
 <li><p>func start() -&gt; public override Start()</p></li>
 <li><p>func pre() -&gt; public override void Pre()</p></li>
@@ -209,6 +219,13 @@ which should also provide as fairly reasonable documentation on how to use C# fe
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="assertions/utility.html" class="btn btn-neutral float-left" title="Utility Assertions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
