@@ -24,9 +24,9 @@ Add the WAT folder from https://github.com/CodeDarigan/WATSharp to your addons f
 
 In your csproj file add the following scripts;
 
-* <Compile Include="addons\WAT\core\assertions\Assertions.cs" />
-* <Compile Include="addons\WAT\core\test\Recorder.cs" />
-* <Compile Include="addons\WAT\core\test\Test.cs" />
+* addons\\WAT\\core\\assertions\\Assertions.cs
+* addons\\WAT\\core\\test\\Recorder.cs
+* addons\\WAT\\core\\test\\Test.cs
 
 *********
 Examples
