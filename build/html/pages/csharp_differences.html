@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>C# API Differences &mdash; WAT 4.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> WAT
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/install.html">Installing WAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/using_the_gui.html">Using The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/utility.html">Utility Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/test_doubles.html">Test Doubles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/using_the_cli.html">Using The Command Line</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assertions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="assertions/boolean.html">Boolean Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/equality.html">Equality Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/file.html">File Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/is_type.html">Is TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/is_not_type.html">Is Not TYPE Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/null.html">Null Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/object.html">Object Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/property.html">Property Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/range.html">Range Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/signal.html">Signal Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/string.html">String Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/test_double.html">Test Double Assertions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assertions/utility.html">Utility Assertions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WAT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>C# API Differences</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/pages/csharp_differences.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="c-api-differences">
+<h1>C# API Differences<a class="headerlink" href="#c-api-differences" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>func title -&gt; public override String Title</p></li>
+<li><p>func start() -&gt; public override Start()</p></li>
+<li><p>func pre() -&gt; public override void Pre()</p></li>
+<li><p>func post() -&gt; public override void Post()</p></li>
+<li><p>func end() -&gt; public override void End()</p></li>
+<li><p>described -&gt; Described</p></li>
+<li><p>Assertions are PascalCase (check addons/WAT/core/assertions/Assertions.cs)</p></li>
+<li><p>Yield Methods work with await ToSignal(until_x())</p></li>
+<li><p>Add the [Test] Attribute to test Methods (instead of prefixing the names with test)</p></li>
+<li><p>Add the [RunWith(arguments)] Attribute to Parameterized Tests (and pass them through the method)</p></li>
+<li><p>TestSuite is not implemented in C# (yet)</p></li>
+<li><p>PoolArrays Assertions were removed</p></li>
+<li><p>Test Doubles don’t exist (C# is a big language, this may take work)</p></li>
+</ul>
+<div class="section" id="installing-wat-sharp">
+<h2>Installing WAT-Sharp<a class="headerlink" href="#installing-wat-sharp" title="Permalink to this headline">¶</a></h2>
+<p>Add the WAT folder from <a class="reference external" href="https://github.com/CodeDarigan/WATSharp">https://github.com/CodeDarigan/WATSharp</a> to your addons folder</p>
+<p>In your csproj file add the following scripts;</p>
+<ul class="simple">
+<li><p>&lt;Compile Include=”addonsWATcoreassertionsAssertions.cs” /&gt;</p></li>
+<li><p>&lt;Compile Include=”addonsWATcoretestRecorder.cs” /&gt;</p></li>
+<li><p>&lt;Compile Include=”addonsWATcoretestTest.cs” /&gt;</p></li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>You can find WAT-Sharp’s own simple TestSuite at <a class="reference external" href="https://github.com/CodeDarigan/WATSharp/tree/master/tests">https://github.com/CodeDarigan/WATSharp/tree/master/tests</a>
+which should also provide as fairly reasonable documentation on how to use C# features</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, https://github.com/CodeDarigan
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

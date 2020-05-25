@@ -41,6 +41,12 @@ Welcome to WAT Docs's documentation!
    Test Double Assertions <pages/assertions/test_double.rst>
    Utility Assertions <pages/assertions/utility.rst>
 
+.. toctree::
+   :maxdepth: 1
+   :caption: C# Support
+
+   C# API Differences <pages/csharp_differences.rst>
+
 Indices and tables
 ==================
 
