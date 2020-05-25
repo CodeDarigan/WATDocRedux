@@ -42,7 +42,7 @@ Welcome to WAT Docs's documentation!
    Utility Assertions <pages/assertions/utility.rst>
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: C# Support
 
    C# API Differences <pages/csharp_differences.rst>
