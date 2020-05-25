@@ -12,7 +12,7 @@ C# API Differences
 * Yield Methods work with await ToSignal(until_x())
 * Add the [Test] Attribute to test Methods (instead of prefixing the names with test)
 * Add the [RunWith(arguments)] Attribute to Parameterized Tests (and pass them through the method)
-* TestSuite is not implemented in C# (yet)
+* TestSuiteOfSuites is not implemented in C# (yet)
 * PoolArrays Assertions were removed
 * Test Doubles don't exist (C# is a big language, this may take work)
 
