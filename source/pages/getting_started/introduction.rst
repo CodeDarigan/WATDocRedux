@@ -264,7 +264,7 @@ results display.
         return "Given A Player"
 
     func test_when_a_player_walks_forward_they_move_to_the_right() -> void:
-        describe("When a they walks forward")
+        describe("When they walk forward")
 
 .. image:: imgs/when.png
 
