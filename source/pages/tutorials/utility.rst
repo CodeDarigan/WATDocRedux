@@ -86,7 +86,7 @@ argument of the yield statement is the YIELD constant builtin of the Test Suite.
 .. image:: imgs/spell_casted_signal.png
 
 To wait for a signal when testing call until_signal(time: float, emitter: Object, event: String). WAT will wait until either emitter emits the event Signal
-or if time runs out (whichever comes from). This will prevent your tests from hanging if the signal is never emitted.
+or if time runs out (whichever comes first). This will prevent your tests from hanging if the signal is never emitted.
 
 You can also inspect arguments emitted along with the signal.
 
