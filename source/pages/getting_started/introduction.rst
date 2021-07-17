@@ -157,7 +157,7 @@ WAT uses special methods from the assert property (known as assertions) instead 
 tests did or didn't pass and allows that information to be passed onto the display. In our case we used the asserts.is_true  
 
 WAT uses custom objects known as assertions which are created by using methods from the assert property. These are used instead of print statements so
-WAT can track which tests passed/failed and how to display that information depending on wheter you're using the GUI or the Command Line.
+WAT can track which tests passed/failed and how to display that information depending on whether you're using the GUI or the Command Line.
 
 In our test above we used the asserts.is_true method which checks if a boolean expression is true, however there are a number of other assertion methods you
 can use instead for better clarity. In this case we could have replaced this assertion method with ``asserts.is_greater_than(player.position.x, previous_position)``
@@ -207,11 +207,11 @@ In this example we create a player and grabs its position before every test and 
     extends WAT.Test
 
     var player: Player
-    var previous_position: int
+    var previous_position: float
 
     func pre():
         player = Player.new()
-        var previous_position = player.position.x
+        previous_position = player.position.x
 
     func post():
         player.free()
@@ -251,10 +251,10 @@ Every Test Suite has a title() method that users are intended to override to ret
     func title() -> String:
         return "Given A Player"
 
+.. image:: imgs/given.png
+
 Any time you run a test method, you can call the describe method which takes a String and will replace the test method name with that String in the
 results display.
-
-.. image:: imgs/given.png
 
 ::
 
